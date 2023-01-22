@@ -1,0 +1,59 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+
+
+{% block headerImage %}
+    <div class="header__content header__content_products">
+        <div class="header__title">
+            <h3 class="main__h3">Контакты</h3>
+            <p>мы всегда на связи</p>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+{%for contactstData in contactsPage%}
+    <content class="content">
+        <div class="content__container">
+            <div class="container contacts">
+                <div class="contacts__container_section">
+                    <div class="contacts__container_where">
+                        <div class="contacts__where_text">
+                            <h5>{{contactstData.title}} <br><br></h5>
+                            <p style="white-space:pre-line">{{contactstData.description}}</p>
+                        </div>
+                        <button type="button" class="sbm btn_link">Телеграм бот</button>
+                    </div>
+                    <div class="contacts__container_organization">
+                        <h5>{{ contactstData.organizationTitle}}</h5>
+                        {%for element in contactstData.organization.all %}
+                        <div class="contacts__container_text">
+                            <span>{{element.title}}</span> <br><br>
+                            <span>{{element.name}}</span> <br>
+                            <span>График работы:</span> {{element.workTime}} <br>
+                            <span>Адрес:</span> {{element.address}} <br>
+                            <span>Телефон:</span> {{element.phoneNumber1}} <br>
+                            <span>Отдел продаж:</span> {{element.salesNumber}} <br>
+                            <span>Aптека:</span> {{element.drugStoreNumber}} <br>
+                            <span>Web:</span> <a href="www.dekontfarm.uz">{{element.siteLink}}</a> <br>
+                            <span>E-mail:</span> <a href="mailto:info@dekontfarm.com">{{element.email}}</a>
+                        </div>
+                        {%endfor%}
+                        <!-- <div class="contacts__container_text">
+                            <span>{{element.organization.name}}</span> <br> <br>
+                            <p><span>График работы:</span> {{element.organization.workTime}} <br>
+                               <span> Адрес:</span> {{element.organization.address}} <br>
+                               <span> Телефон:</span> {{element.organization.phoneNumber1}} <br>
+                                <span>E-mail:</span> {{element.organization.email}} </p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>   
+            <div class="container__map">
+                <iframe src={{contactstData.mapLink}} width="100%" height="100%" frameborder="0"></iframe>  
+            </div>
+        </div>
+    </content>
+    {%endfor%}
+{% endblock %}

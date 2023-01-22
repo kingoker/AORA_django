@@ -1,0 +1,60 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+
+
+{% block headerImage %}
+<div class="header__content header__content_products">
+    <div class="header__title">
+        <h3 class="main__h3">Продукты</h3>
+        <p>это то что расскажет о нас все</p>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+    <content class="content">
+        <div class="content__container">
+            <div class="container products">
+                <div class="block__container_products">
+                    {%for categoryData in categories%}
+                    <div class="block__container_item">
+                        <a href="{% url 'products' %}">
+                            <img src={{categoryData.categoryIcon.url}} alt="">{{categoryData.categoryName}}
+                        </a>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            {%for categoryData in categories%}
+            <div class="products__section_container">  
+                <div class="products__section_title">
+                    <img src={{categoryData.categoryIcon.url}} alt="">
+                    <h4>{{categoryData.categoryName}}</h4>
+                    <span></span>
+                </div>
+                <div class="products__section_text">
+                    <p class="main__p">{{categoryData.categoryDescription}}</p>
+                </div>
+                <div class="products__section_block">
+                    {% for p in products %}
+                        {% if p.category_id == categoryData.id %}
+                        <a href="{% url 'product' p.slug %}">
+                            <div class="products__section_item"> 
+                                <img src={{p.productImage.all.first.imageField.url}} alt="pill">
+                                <div class="products__item_text">
+                                    <h4>{{ p.productName }}</h4>
+                                    <p>{{ p.productDescription }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+    </content>
+{% endblock %}

@@ -1,0 +1,256 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+
+
+{% block headerImage %}
+    <div class="header__section">
+        <p>Антистресс</p>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <content class="content product">
+        <div class="section__content">
+            <div class="beneficios__container">
+                <div class="beneficios__container_section product__item_container">
+                    {%for productData in product%}
+                    <div class="product__item_content">
+                        <div class="product__item_img">
+                            <div class="product__main_img">
+                                <img src="{{productData.productImage.all.first.imageField.url}}" alt="">
+                            </div>
+                            <div class="product__item_images">
+                                {%for element in productData.productImage.all %}
+                                <img src={{element.imageField.url}} alt="">
+                                {%endfor%}
+                            </div>                          
+                        </div>
+                        <div class="product__item_text">
+                            <h2>{{productData.productName}}</h2>
+                            <div class="product__rating">
+                                <div class="rating__stars">
+                                    <div class="rating__stars_items">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                            class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                            class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                            class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                            class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#8ED2DE"
+                                            class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="rating__reviews">
+                                    <p>(17 отзывов)</p>
+                                </div>
+                            </div>
+                            <div class="product__description">
+                                <h3>Описание продукта</h3>
+                                <p>{{productData.productDescription}}</p>
+                                <h2>{{productData.productPrice}} сум</h2>
+                                <a href="/">купить продукт</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__item_description">
+                        <div class="beneficios__section_text">
+                            <p>{{productData.information}}</p>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+            </div>
+            <div class="beneficios__container">
+                <h4 class="main__h4">Beneficios</h4>
+                <div class="beneficios__container_section">
+                    <div class="beneficios__section_list">
+                        <div class="beneficios__list_item">
+                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
+                            <p>уменьшения симптомов стресса</p>
+                        </div>
+                        <div class="beneficios__list_item">
+                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
+                            <p>уменьшения тревоги</p>
+                        </div>
+                        <div class="beneficios__list_item">
+                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
+                            <p>уменьшения депрессии</p>
+                        </div>
+                        <div class="beneficios__list_item">
+                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
+                            <p>улучшения функций нервной системы</p>
+                        </div>
+                        <div class="beneficios__list_item">
+                            <img src="img/iso.svg" alt="">
+                            <p>Медицинский сертификат</p>
+                        </div>
+                        <div class="beneficios__list_item">
+                            <img src="img/iso.svg" alt="">
+                            <p>Второй медицинский сертификат</p>
+                        </div>
+                    </div>
+                    <div class="beneficios__section_text">
+                        <p><span>Содержит:</span> 30 капсул  | <span>Суточная доза:</span> 2 капсулы в день вне зависимости от приема пищи, взрослым и детям старше 12 лет. Не превышайте рекомендуемую дозу.
+                        </p> <br><br>
+                        <p><span>Способ применения:</span> Принимать по 2 капсулы в день в течение не менее 30 дней. Согласно имеющейся технической информации ингредиенты продукта хорошо переносятся без побочных эффектов в указанных дозах.
+                        </p> <br><br>
+                        <p><span>Преимущества:</span> АКАФРОН — это натуральное решение для улучшения настроения и уменьшения симптомов стресса, тревоги, депрессии и улучшения функций нервной системы. АКАФРОН состоит из экстракта Аффрона® (Crocus sativus L.), стандартизированного на ≥3,5% лептикрозалидов и основных витаминов. Компоненты АКАФРОН разработаны для того, чтобы вызывать положительное влияние на наше настроение и когнитивные способности</p>
+                    </div>
+                </div>
+            </div>
+            <div class="action__container">
+                <h4 class="main__h4">Механизм действия</h4>
+                <div class="action__container_section">
+                    <img src="{% static 'img/aqaffron.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="appropriate__products_container">
+                <h4 class="main__h4">Сопутствующие товары</h4>
+                <div class="products__section_block">
+                    <a href="{% url 'products' %}">
+                        <div class="products__section_item">
+                            <img src="{% static 'img/pill.jpg' %}" alt="pill">
+                            <div class="products__item_text">
+                                <h4>Акафрон</h4>
+                                <p>Он снимает стресс и беспокойство, улучшая настроение и уменьшая бессонницу.  Исследования у взрослых, подростков и в качестве вспомогательного средства при лечении   антидепрессантами.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{% url 'products' %}">
+                        <div class="products__section_item">
+                            <img src="{% static 'img/pill.jpg' %}" alt="pill">
+                            <div class="products__item_text">
+                                <h4>Акафрон</h4>
+                                <p>Он снимает стресс и беспокойство, улучшая настроение и уменьшая бессонницу.  Исследования у взрослых, подростков и в качестве вспомогательного средства при лечении   антидепрессантами.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{% url 'products' %}">
+                        <div class="products__section_item">
+                            <img src="{% static 'img/pill.jpg' %}" alt="pill">
+                            <div class="products__item_text">
+                                <h4>Акафрон</h4>
+                                <p>Он снимает стресс и беспокойство, улучшая настроение и уменьшая бессонницу.  Исследования у взрослых, подростков и в качестве вспомогательного средства при лечении антидепрессантами.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="feedback__container">
+                <h4 class="main__h4">Отзывы</h4>
+                <div class="feedback__container_section">
+                    <div class="review__container">
+                        <div class="rating__start">
+                            <div class="rating__stars_items">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#8ED2DE"
+                                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review__text">
+                            <div class="review__title">
+                                <h5>Близнецы</h5> &ThickSpace;
+                                <p>(1 января 2023)</p>
+                            </div>
+                            <p>От стресса помогло, осталось как то записаться на онлайн курсы astramed academy и начать
+                                новую независимую жизнь</p>
+                        </div>
+                        <div class="form review_form">
+                            <form action="" method="post" class="feedback__form">
+                                <div class="rating">
+                                    <div class="rating__items">
+                                        <input id="rating__5" type="radio" class="rating__item" name="rating">
+                                        <label for="rating__5" class="rating__label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
+                                                fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        </label>
+                                        <input id="rating__4" type="radio" class="rating__item" name="rating">
+                                        <label for="rating__4" class="rating__label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
+                                                fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        </label>
+                                        <input id="rating__3" type="radio" class="rating__item" name="rating">
+                                        <label for="rating__3" class="rating__label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
+                                                fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        </label>
+                                        <input id="rating__2" type="radio" class="rating__item" name="rating">
+                                        <label for="rating__2" class="rating__label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
+                                                fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        </label>
+                                        <input id="rating__1" type="radio" class="rating__item" name="rating">
+                                        <label for="rating__1" class="rating__label">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
+                                                fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                            </svg>
+                                        </label>
+                                    </div>
+                                </div>
+                                <textarea name="feedback_textarea" id="" cols="30" rows="10"
+                                    placeholder="Отзыв"></textarea>
+                                <input type="text" placeholder="Номер телефона">
+                                <input type="text" placeholder="Фамилия Имя">
+                                <button type="submit" class="sbm">Оставить отзыв</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </content>
+{% endblock %}
