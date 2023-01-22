@@ -1,7 +1,26 @@
+if (document.querySelector('.swiper')){
+    var swiper = new Swiper(".swiper", {
+        loop: true,
+        slidesPerView: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            renderBullet: function () {
+                return `<span class="swiper-pagination-bullet"></span>`;
+            },
+        },
+        autoplay: {
+            delay: 5000,
+        },
+        speed: 600,
+    });
+}
+
+
 // бургер меню
-const iconMenu = document.querySelector('.menu__burger');
-const menuBody = document.querySelector('.header__body');
-const menuItem = document.querySelectorAll('.header__link');
+var iconMenu = document.querySelector('.menu__burger');
+var menuBody = document.querySelector('.header__body');
+var menuItem = document.querySelectorAll('.header__link');
 
 if(iconMenu){
     iconMenu.addEventListener("click", function(e){
@@ -17,23 +36,3 @@ if(iconMenu){
         })
     })
 }
-
-
-// карусель
-
-var swiper = new Swiper(".swiper", {
-    loop: true,
-    slidesPerView: 1,
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-        renderBullet: function () {
-            return `<span class="swiper-pagination-bullet"></span>`;
-        },
-    },
-    autoplay: {
-        delay: 5000,
-    },
-    speed: 600,
-});
-
