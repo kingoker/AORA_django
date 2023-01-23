@@ -3,10 +3,14 @@ from .models import *
 
 
 def index(request):
-    mainPage = MainPage.objects.all()
-    
+    mainImages = MainImage.objects.filter(mainPage__isnull=False)
+    mainPages = MainPage.objects.all()
+
+    print(mainImages.values())
+
     context  = {
-        "mainPage": mainPage
+        'mainImages': mainImages,
+        "mainPages": mainPages,
     }
 
     return render(request, 'index.html', context)

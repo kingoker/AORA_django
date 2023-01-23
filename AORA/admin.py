@@ -52,9 +52,9 @@ class ProductAdmin(admin.ModelAdmin):
         # pass
 
 # inline Image
-class MainImageAdmin(admin.TabularInline):
+class MainImageAdmin(admin.StackedInline):
     model = MainImage
-    extra = 1
+    extra = 0
 
 
 # Страница Главная
@@ -69,3 +69,4 @@ class ContactInformation_PageAdmin(admin.ModelAdmin):
     inlines = [MainImageAdmin]
 
 admin.site.register(ContactInformation_Page, ContactInformation_PageAdmin)
+admin.site.register(MainImage)

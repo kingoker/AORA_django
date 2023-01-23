@@ -2,8 +2,8 @@ from django.db import models
 
 #Here we made a model for main slider photos in pages
 class MainImage(models.Model):
-    mainPage = models.ForeignKey("MainPage", on_delete=models.CASCADE, verbose_name='Страница главная', null=True, blank=True,)
-    contactPage = models.ForeignKey("ContactInformation_Page", on_delete=models.CASCADE, verbose_name='Страница контакты', null=True, blank=True,)
+    mainPage = models.ForeignKey("MainPage", on_delete=models.CASCADE, verbose_name='Страница главная', null=True, blank=True, editable=None)
+    contactPage = models.ForeignKey("ContactInformation_Page", on_delete=models.CASCADE, verbose_name='Страница контакты', null=True, blank=True, editable=None)
     image = models.ImageField(upload_to='mainPhoto/', verbose_name='Фото')
     title = models.CharField(max_length=255, verbose_name='Заголовок') 
     subtitle = models.TextField(verbose_name='Подзаголовок') 

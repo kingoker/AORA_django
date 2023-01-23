@@ -4,116 +4,51 @@
 
 {% block headerImage %}
 <div class="header__slider">
-    <div class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-        <div class="swiper-wrapper" id="swiper-wrapper-447d4ea4eaf5a654" aria-live="off" style="transform: translate3d(-1903px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="4" role="group" aria-label="5 / 5" style="width: 1903px;">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for mainImage in mainImages %}
+            <div class="swiper-slide">
                 <div class="slide">
-                    <img src="{% static 'img/bg.jpg' %}" alt="">
+                    <img src="{{ mainImage.image.url }}" alt="">
                     <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
+                        <h3 class="main__h3">{{ mainImage.title }}</h3>
+                        <p>{{ mainImage.subtitle }}</p>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="1 / 5" style="width: 1903px;">
-                <div class="slide">
-                    <img src="{% static 'img/bg.jpg' %}" alt="">
-                    <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1903px;">
-                <div class="slide">
-                    <img src="{% static 'img/bg.jpg' %}" alt="">
-                    <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide" data-swiper-slide-index="2" role="group" aria-label="3 / 5" style="width: 1903px;">
-                <div class="slide">
-                    <img src="{% static '' %}img/bg.jpg" alt="">
-                    <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide" data-swiper-slide-index="3" role="group" aria-label="4 / 5" style="width: 1903px;">
-                <div class="slide">
-                    <img src="{% static 'img/bg.jpg' %}" alt="">
-                    <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="4" role="group" aria-label="5 / 5" style="width: 1903px;">
-                <div class="slide">
-                    <img src="{% static 'img/bg.jpg' %}" alt="">
-                    <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
-                    </div>
-                </div>
-            </div>
-
-        <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="1 / 5" style="width: 1903px;">
-                <div class="slide">
-                    <img src="{% static 'img/bg.jpg' %}" alt="">
-                    <div class="header__title">
-                        <h3 class="main__h3">AORA Health</h3>
-                        <p>это компания, занимающаяся исследованиями <br> и разработками, которая создает
-                            нутрицевтики для <br> конкретных патологий с клиническими <br>исследованиями
-                            окончательного состава.</p>
-                    </div>
-                </div>
-            </div></div>
-        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0"></span><span class="swiper-pagination-bullet" tabindex="0"></span><span class="swiper-pagination-bullet" tabindex="0"></span><span class="swiper-pagination-bullet" tabindex="0"></span></div>
-    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
 </div>
 {% endblock %}
 
 
-{% block content %}
-    {%for mainData in mainPage%}
+{% block content %}            
+    {% for mainPage in mainPages %}
     <content class="content">
         <div class="content__container">
             <div class="container">
                 <div class="block__container">
                     <div class="block__container_img">
-                        <img src={{mainData.topBlock.image.url}} alt="who we are">
+                        <img src={{mainPage.topBlock.image.url}} alt="who we are">
                     </div>
                     <div class="block__container_text">
-                        <h5 class="main__h5">{{mainData.topBlock.header}}</h5>
-                        <h4 class="main__h4">{{mainData.topBlock.title}}</h4>
-                        <p class="main__p">{{mainData.topBlock.subtitle}}</p>
+                        <h5 class="main__h5">{{mainPage.topBlock.header}}</h5>
+                        <h4 class="main__h4">{{mainPage.topBlock.title}}</h4>
+                        <p class="main__p">{{mainPage.topBlock.subtitle}}</p>
                     </div>
                 </div>
             </div>
             <div class="inn__container">
                 <div class="block__container">
                     <div class="container__text_inn">
-                        <h5 class="main__h5">{{mainData.innovationheader}}</h5>
-                        <h4 class="main__h4">{{mainData.innovationtitle}}</h4>
-                        <p class="main__p">{{mainData.innovationsubtitle}}</p>
+                        <h5 class="main__h5">{{mainPage.innovationheader}}</h5>
+                        <h4 class="main__h4">{{mainPage.innovationtitle}}</h4>
+                        <p class="main__p">{{mainPage.innovationsubtitle}}</p>
                     </div>
                     <div class="block__container_img">
-                        <img src={{mainData.innovationimage.url}} alt="инновация">
+                        <img src={{mainPage.innovationimage.url}} alt="инновация">
                     </div>
                 </div>
             </div>
@@ -121,28 +56,28 @@
         <div class="content__container_diff aic">
             <div class="products__container">
                     <div class="block__container_img">
-                        <img src={{mainData.productionimage.url}} alt="products">
+                        <img src={{mainPage.productionimage.url}} alt="products">
                     </div>
                     <div class="products__text">
-                        <h5 class="main__h5">{{mainData.productionheader}}</h5>
-                        <h4 class="main__h4">{{mainData.productiontitle}}</h4>
-                        <p class="main__p">{{mainData.productionsubtitle}}</p>
-                        <a class="btn" href="{% url 'products' %}">{{mainData.productionBottonName}}</a>
+                        <h5 class="main__h5">{{ mainPage.productionheader }}</h5>
+                        <h4 class="main__h4">{{ mainPage.productiontitle }}</h4>
+                        <p class="main__p">{{ mainPage.productionsubtitle }}</p>
+                        <a class="btn" href="{% url 'products' %}">{{ mainPage.productionBottonName }}</a>
                     </div>   
             </div>
         </div>
         <div class="content__container">
             <div class="contacts__container">
                 <div class="contacts__container_title">
-                    <h4 class="main__h4">{{mainData.whereToBuyheader}}</h4>
+                    <h4 class="main__h4">{{ mainPage.whereToBuyheader }}</h4>
                 </div>
                 <div class="contacts__container_content">
                     <div class="contacts__container_img">
                         <img src="{% static 'img/building.jpg' %}" alt="where get products">
                     </div>
                     <div class="block__container_text">
-                        <p>{{mainData.whereToBuydescription}}</p>
-                        <a href="{% url 'contacts' %}" class="btn">{{mainData.whereToBuyButtonName}}</a>
+                        <p>{{ mainPage.whereToBuydescription }}</p>
+                        <a href="{% url 'contacts' %}" class="btn">{{ mainPage.whereToBuyButtonName }}</a>
                     </div>
                 </div>
             </div>
@@ -155,7 +90,7 @@
                         <textarea name="feedback_textarea" id="" cols="30" rows="10" placeholder="Коммментарий"></textarea>
                         <input type="text" placeholder="Номер телефона">
                         <input type="text" placeholder="Фамилия Имя">
-                        <button type="submit" class="sbm">{{mainData.formButtonName}}</button>
+                        <button type="submit" class="sbm">{{ mainPage.formButtonName }}</button>
                     </form>
                 </div>
             </div>
