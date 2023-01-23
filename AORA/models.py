@@ -2,6 +2,8 @@ from django.db import models
 
 #Here we made a model for main slider photos in pages
 class MainImage(models.Model):
+    mainPage = models.ForeignKey("MainPage", on_delete=models.CASCADE, verbose_name='Страница главная', null=True, blank=True,)
+    contactPage = models.ForeignKey("ContactInformation_Page", on_delete=models.CASCADE, verbose_name='Страница контакты', null=True, blank=True,)
     image = models.ImageField(upload_to='mainPhoto/', verbose_name='Фото')
     title = models.CharField(max_length=255, verbose_name='Заголовок') 
     subtitle = models.TextField(verbose_name='Подзаголовок') 
@@ -52,7 +54,6 @@ class Organization(models.Model):
 
 # Model for Organizations in Contact page
 class ContactInformation_Page(models.Model):
-    mainImage = models.ForeignKey(MainImage, on_delete=models.CASCADE, verbose_name='Главная картинка')
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = models.TextField(max_length=255,verbose_name='Описание')
     organizationTitle = models.CharField(max_length=255,verbose_name='Загаловок над организаций')
@@ -73,7 +74,7 @@ class ContactInformation_Page(models.Model):
 
 # Модель для главной страницы
 class MainPage(models.Model):
-    mainImage = models.ForeignKey(MainImage, on_delete=models.CASCADE, verbose_name='Главная фотография')
+    # mainImage = models.ManyToManyField(MainImage, verbose_name='Главная фотография')
     topBlock = models.ForeignKey(TopBlock, on_delete=models.CASCADE, verbose_name='Верхний блок')
 
     innovationheader = models.CharField(max_length=255, verbose_name='Название инновации')

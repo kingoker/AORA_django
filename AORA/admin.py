@@ -6,14 +6,13 @@ from .models import *
 
 
 class MainForm(forms.ModelForm):
-    
+
     class Meta:
         model = MainPage
         exclude = []
         field_classes = {
             'innovationimage': SvgAndImageFormField,
             'productionimage': SvgAndImageFormField
-
         }
 
 class MainAdmin(admin.ModelAdmin):
@@ -21,7 +20,7 @@ class MainAdmin(admin.ModelAdmin):
 
 
 class CategoryForm(forms.ModelForm):
-    
+
     class Meta:
         model = Category
         exclude = []
@@ -37,33 +36,36 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('productName', )}
 
-# class MainInline(admin.TabularInline):
-#     model = MainImage
-#     extra = 0
 
-# class ContactInformation_PageAdmin(admin.ModelAdmin):
-#     inlines = [
-#         MainInline
-#     ]
+# admin.site.register(MainPage, MainAdmin)
+# admin.site.register(Category, CategoryAdmin)
+# admin.site.register(Product, ProductAdmin)
 
-# # class MainPageInline(admin.StackedInline):
-# #     model = MainPage
+# admin.site.register(MainPage)
 
-# # class MainImageAdmin(admin.ModelAdmin):
-# #     inlines = [
-# #         MainPageInline,
-# #     ]
+# models = apps.get_models()
 
-admin.site.register(MainPage, MainAdmin)
+# for model in models:
+#     try:
+#         admin.site.register(model)
+#     except admin.sites.AlreadyRegistered:
+        # pass
 
-admin.site.register(Category, CategoryAdmin)
+# inline Image
+class MainImageAdmin(admin.TabularInline):
+    model = MainImage
+    extra = 1
 
-admin.site.register(Product, ProductAdmin)
 
-models = apps.get_models()
+# Страница Главная
+class MainPageAdmin(admin.ModelAdmin):
+   inlines = [MainImageAdmin]
 
-for model in models:
-    try:
-        admin.site.register(model)
-    except admin.sites.AlreadyRegistered:
-        pass
+admin.site.register(MainPage, MainPageAdmin)
+
+
+# Страница Контактной информации
+class ContactInformation_PageAdmin(admin.ModelAdmin):
+    inlines = [MainImageAdmin]
+
+admin.site.register(ContactInformation_Page, ContactInformation_PageAdmin)
