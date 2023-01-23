@@ -37,20 +37,10 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('productName', )}
 
 
-# admin.site.register(MainPage, MainAdmin)
-# admin.site.register(Category, CategoryAdmin)
-# admin.site.register(Product, ProductAdmin)
 
-# admin.site.register(MainPage)
 
-# models = apps.get_models()
 
-# for model in models:
-#     try:
-#         admin.site.register(model)
-#     except admin.sites.AlreadyRegistered:
-        # pass
-
+####### Вывод в админку #######
 # inline Image
 class MainImageAdmin(admin.StackedInline):
     model = MainImage
