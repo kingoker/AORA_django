@@ -10,8 +10,6 @@ class MainImage(models.Model):
         verbose_name = 'Главная картинка'
         verbose_name_plural = 'Главные картинки'
 
-        
-
     def __str__(self):
         return self.title
 
@@ -24,8 +22,8 @@ class TopBlock(models.Model):
     subtitle = models.TextField(verbose_name='Подзаголовок')
 
     class Meta:
-        verbose_name = 'Вархний блок'
-        verbose_name_plural = 'Вархние блоки'
+        verbose_name = 'Верхний блок'
+        verbose_name_plural = 'Верхние блоки'
 
     def __str__(self):
         return self.title
@@ -66,8 +64,8 @@ class ContactInformation_Page(models.Model):
     botShopLink = models.URLField(blank=True, null = True, verbose_name='Ссылка на Бот')
 
     class Meta:
-        verbose_name = 'Страница Контакты'
-        verbose_name_plural = 'Страница Контакты'
+        verbose_name = '- Страница Контакты'
+        verbose_name_plural = '- Страница Контакты'
 
     def __str__(self):
         return self.title
@@ -96,12 +94,11 @@ class MainPage(models.Model):
     formButtonName = models.CharField(max_length=255, verbose_name='Название кнопки формы')
 
     class Meta:
-        verbose_name = 'Главная страница'
-
-        verbose_name_plural = 'Главная страница'
+        verbose_name = '- Страница Главная'
+        verbose_name_plural = '- Страница Главная'
 
     def __str__(self):
-        return "Главная страница"
+        return "- Страница Главная"
 
 
 # Модель для элементов страниц
@@ -112,8 +109,8 @@ class DifferenceItem(models.Model):
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
-        verbose_name = 'Элемент'
-        verbose_name_plural = 'Элементы'
+        verbose_name = 'Элемент (картинка + текст)'
+        verbose_name_plural = 'Элементы (картинка + текст)'
 
     def __str__(self):
         return self.itemTitle
@@ -130,11 +127,11 @@ class AboutPage(models.Model):
     scienceItem = models.ForeignKey(DifferenceItem, on_delete=models.CASCADE, verbose_name='Нучный партнёр', null=True, related_name='sample')
 
     class Meta:
-        verbose_name = 'Страница о нас'
-        verbose_name_plural = 'Страница о нас'
+        verbose_name = '- Страница О нас'
+        verbose_name_plural = '- Страница О нас'
 
     def __str__(self):
-        return "Страница о нас"
+        return "- Страница о нас"
 
 
 class InnovationPage(models.Model):
@@ -143,18 +140,11 @@ class InnovationPage(models.Model):
     innovationItem = models.ManyToManyField(DifferenceItem, verbose_name='Элеиенты')
 
     class Meta:
-        verbose_name = 'Страница инноваций'
-
-        verbose_name_plural = 'Страница инноваций'
+        verbose_name = '- Страница Инноваций'
+        verbose_name_plural = '- Страница Инноваций'
 
     def __str__(self):
-        return "Страница инноваций"
-
-# # Страница Инновации
-# InnovationPage
-#     MainImage (O2O)
-#     TopBlock(O2O)
-#     InnovationItem(M2M)
+        return "- Страница Инноваций"
 
 
 class Category(models.Model):
@@ -164,18 +154,10 @@ class Category(models.Model):
 
     class Meta:
         verbose_name = 'Категория'
-
         verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.categoryName
-
-
-# Category
-#     CategoryIcon
-#     CategoryName
-#     CategoryDescription
-
 
 
 class ProductImage(models.Model):
@@ -197,7 +179,6 @@ class Benefits(models.Model):
 
     class Meta:
         verbose_name = 'Польза продукта'
-
         verbose_name_plural = 'Пользы продуктов'
 
     def __str__(self):
@@ -221,4 +202,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.productName
-
