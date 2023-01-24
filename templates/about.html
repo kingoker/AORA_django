@@ -3,75 +3,48 @@
 
 
 {% block headerImage %}
+    {% for mainImage in mainImages %}
     <div class="header__content">
         <div class="header__title">
-            <h3 class="main__h3">О нас</h3>
-            <p>Мы разрабатываем, производим<br> и распространяем</p>
+            <h3 class="main__h3">{{ mainImage.title }}</h3>
+            <p>{{ mainImage.subtitle }}</p>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}
 
 
 {% block content %}
+{% for aboutPage in aboutPages %}
     <content class="content">
         <div class="content__container">
             <div class="container">
                 <div class="block__container">
                     <div class="block__container_img">
-                        <img src="{% static 'img/about_block.jpg' %}" alt="who we are">
+                        <img src="{{ aboutPage.topBlockImage.url }}" alt="who we are">
                     </div>
                     <div class="block__container_text">
-                        <h5 class="main__h5">Кто мы</h5>
-                        <h4 class="main__h4">Aora является компанией, занимающейся исследованием и разработкой нутрицевтиков.</h4>
-                        <p class="main__p">Мы создаем инновационные решения, научно протестированные, с конкретными преимуществами, призванные дополнить или заменить лекарства. Обычно наши продукты рекомендуются медицинскими работниками.
-                        Наша миссия заключается в улучшении самочувствия людей с помощью нутрицевтических продуктов с доказанной пользой и подкрепленной научными данными.</p>
+                        <h5 class="main__h5">{{ aboutPage.topBlockHeader }}</h5>
+                        <h4 class="main__h4">{{ aboutPage.topBlockTitle }}</h4>
+                        <p class="main__p">{{ aboutPage.topBlockSubtitle }}</p>
                     </div>
                 </div>
             </div>
             <div class="about__difference_container">
                 <div class="about__difference_title">
                     <h5 class="main__h5">
-                        Что отличает нас от других?
+                        {{ aboutPage.differenceHeader }}
                     </h5>
-                    <h4 class="main__h4">Мы разработали уникальный способ применения научных методов в процессе производства нашей продукции.</h4>
+                    <h4 class="main__h4">{{ aboutPage.differenceTitle }}</h4>
                 </div>
                 <div class="about__difference_block">
+                    {% for differenceItem in differenceItems%}
                     <div class="about__difference_points">
-                        <img src="{% static 'img/mecanismo-de-accion 1.png' %}" alt="">
-                        <h4 class="main__h4">Биоактивные молекулы</h4>
-                        <p class="main__p">Мы извлекаем активные вещества из натуральных ингредиентов, которые находятся вокруг нас.
-                            Получены из натуральных ингредиентов самого высокого качества благодаря нашим поставщикам</p>
+                        <img src="{{ differenceItem.itemImage.url }}" alt="">
+                        <h4 class="main__h4">{{ differenceItem.itemTitle }}</h4>
+                        <p class="main__p">{{ differenceItem.itemDescription }}</p>
                     </div>
-                    <div class="about__difference_points">
-                        <img src="{% static 'img/mecanismo-de-accion 1.png' %}" alt="">
-                        <h4 class="main__h4">Биоактивные молекулы</h4>
-                        <p class="main__p">Мы извлекаем активные вещества из натуральных ингредиентов, которые находятся вокруг нас.
-                            Получены из натуральных ингредиентов самого высокого качества благодаря нашим поставщикам</p>
-                    </div>
-                    <div class="about__difference_points">
-                        <img src="{% static 'img/mecanismo-de-accion 1.png' %}" alt="">
-                        <h4 class="main__h4">Биоактивные молекулы</h4>
-                        <p class="main__p">Мы извлекаем активные вещества из натуральных ингредиентов, которые находятся вокруг нас.
-                            Получены из натуральных ингредиентов самого высокого качества благодаря нашим поставщикам</p>
-                    </div>
-                    <div class="about__difference_points">
-                        <img src="{% static 'img/mecanismo-de-accion 1.png' %}" alt="">
-                        <h4 class="main__h4">Биоактивные молекулы</h4>
-                        <p class="main__p">Мы извлекаем активные вещества из натуральных ингредиентов, которые находятся вокруг нас.
-                            Получены из натуральных ингредиентов самого высокого качества благодаря нашим поставщикам</p>
-                    </div>
-                    <div class="about__difference_points">
-                        <img src="{% static 'img/mecanismo-de-accion 1.png' %}" alt="">
-                        <h4 class="main__h4">Биоактивные молекулы</h4>
-                        <p class="main__p">Мы извлекаем активные вещества из натуральных ингредиентов, которые находятся вокруг нас.
-                            Получены из натуральных ингредиентов самого высокого качества благодаря нашим поставщикам</p>
-                    </div>
-                    <div class="about__difference_points">
-                        <img src="{% static 'img/mecanismo-de-accion 1.png' %}" alt="">
-                        <h4 class="main__h4">Биоактивные молекулы</h4>
-                        <p class="main__p">Мы извлекаем активные вещества из натуральных ингредиентов, которые находятся вокруг нас.
-                            Получены из натуральных ингредиентов самого высокого качества благодаря нашим поставщикам</p>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -79,71 +52,29 @@
            <div class="about__difference_container">
             <div class="about__community_title mt-100">
                 <h5 class="main__h5">
-                   Научное сообщество
+                    {{ aboutPage.scienceHeader }}
                 </h5>
-                <h4 class="main__h4">
-                    У нас есть соглашения о сотрудничестве с различными научными учреждениями. Таким образом, мы анализируем и гарантируем терапевтическую оценку наших нутрицевтиков, проводя клинические исследования готовой продукции. <br><br> Благодаря расположению в мадридском парке Científico, рядом с Мадридским автономным университетом (UAM), мы имеем легкий доступ к сети наших партнеров, которую образуют, в частности, такие компании, как:</h4>
+                <h4 class="main__h4">{{ aboutPage.scienceDescription }}</h4>
             </div>
             <div class="about__difference_container">
                 <div class="about__companies_block mt-100">
+                    {% for scienceItem in scienceItems %}
                     <div class="about__companies_points">
                         <div class="about__companies_img">
-                            <img src="{% static 'img/company1.png' %}" alt="company">
+                            <img src="{{ scienceItem.itemImage.url }}" alt="company">
                         </div>
                         <div class="about__companies_text">
-                            <h4 class="main__h4">Название компании</h4>
-                            <p>Высший совет научных исследований (CSIC) является крупнейшим государственным учреждением, занимающимся исследованиями в Испании и третьим по величине в Европе. Его основная цель - развитие и продвижение исследований, способствующих достижению научно-технического прогресса.</p>
+                            <h4 class="main__h4">{{ scienceItem.itemTitle }}</h4>
+                            <p>{{ scienceItem.itemDescription }}</p>
                         </div>
                     </div>
-                    <div class="about__companies_points">
-                        <div class="about__companies_img">
-                            <img src="{% static 'img/company1.png' %}" alt="company">
-                        </div>
-                        <div class="about__companies_text">
-                            <h4 class="main__h4">Название компании</h4>
-                            <p>Высший совет научных исследований (CSIC) является крупнейшим государственным учреждением, занимающимся исследованиями в Испании и третьим по величине в Европе. Его основная цель - развитие и продвижение исследований, способствующих достижению научно-технического прогресса.</p>
-                        </div>
-                    </div>
-                    <div class="about__companies_points">
-                        <div class="about__companies_img">
-                            <img src="{% static 'img/company1.png' %}" alt="company">
-                        </div>
-                        <div class="about__companies_text">
-                            <h4 class="main__h4">Название компании</h4>
-                            <p>Высший совет научных исследований (CSIC) является крупнейшим государственным учреждением, занимающимся исследованиями в Испании и третьим по величине в Европе. Его основная цель - развитие и продвижение исследований, способствующих достижению научно-технического прогресса.</p>
-                        </div>
-                    </div>
-                    <div class="about__companies_points">
-                        <div class="about__companies_img">
-                            <img src="{% static 'img/company1.png' %}" alt="company">
-                        </div>
-                        <div class="about__companies_text">
-                            <h4 class="main__h4">Название компании</h4>
-                            <p>Высший совет научных исследований (CSIC) является крупнейшим государственным учреждением, занимающимся исследованиями в Испании и третьим по величине в Европе. Его основная цель - развитие и продвижение исследований, способствующих достижению научно-технического прогресса.</p>
-                        </div>
-                    </div>
-                    <div class="about__companies_points">
-                        <div class="about__companies_img">
-                            <img src="{% static 'img/company1.png' %}" alt="company">
-                        </div>
-                        <div class="about__companies_text">
-                            <h4 class="main__h4">Название компании</h4>
-                            <p>Высший совет научных исследований (CSIC) является крупнейшим государственным учреждением, занимающимся исследованиями в Испании и третьим по величине в Европе. Его основная цель - развитие и продвижение исследований, способствующих достижению научно-технического прогресса.</p>
-                        </div>
-                    </div>
-                    <div class="about__companies_points mb-100">
-                        <div class="about__companies_img">
-                            <img src="{% static 'img/company1.png' %}" alt="company">
-                        </div>
-                        <div class="about__companies_text">
-                            <h4 class="main__h4">Название компании</h4>
-                            <p>Высший совет научных исследований (CSIC) является крупнейшим государственным учреждением, занимающимся исследованиями в Испании и третьим по величине в Европе. Его основная цель - развитие и продвижение исследований, способствующих достижению научно-технического прогресса.</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 
             </div>
            </div>
         </div>
     </content>
+
+{% endfor %}
 {% endblock %}

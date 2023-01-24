@@ -3,50 +3,55 @@
 
 
 {% block headerImage %}
-    <div class="header__content header__content_inn">
+    {% for mainImage in mainImages %}
+    <div class="header__content">
         <div class="header__title">
-            <h3 class="main__h3">Инновация</h3>
-            <p>это образ нашего мышления</p>
+            <h3 class="main__h3">{{ mainImage.title }}</h3>
+            <p>{{ mainImage.subtitle }}</p>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}
 
 
 {% block content %}
-{% for innovationData in innovationPage %}
+{% for innovationPage in innovationPages %}
     <content class="content">
         <div class="content__container">
             <div class="container">
                 <div class="block__container">
                     <div class="block__container_img">
-                        <img src={{innovationData.topBlock.image.url}} alt="creating product">
+                        <img src={{ innovationPage.topBlockImage.url }} alt="creating product">
                     </div>
                     <div class="block__container_text">
-                        <h5 class="main__h5">{{innovationData.topBlock.header}}</h5>
-                        <h4 class="main__h4">{{innovationData.topBlock.title}}</h4>
-                        <p class="main__p">{{innovationData.topBlock.subtitle}}</p>
+                        <h5 class="main__h5">{{ innovationPage.topBlockHeader }}</h5>
+                        <h4 class="main__h4">{{ innovationPage.topBlockTitle }}</h4>
+                        <p class="main__p">{{ innovationPage.topBlockSubtitle }}</p>
                     </div>
                 </div>
             </div>
             <div class="innovation__container">
-                <div class="innovation__container_block">
+                {% for differenceItem in differenceItems %}
+                <div class="innovation__item">
                     <div class="innovation__block_img">
-                        {%for element in innovationData.innovationItem.all %}
-                        <img src={{element.itemImage.url}} alt="">
-                        {%endfor%}
-                    </div>
-                    <div class="innovation__block_line">
-                        <img src="{% static 'img/line.png' %}" alt="line">
+                        <img src="{{ differenceItem.itemImage.url }}" alt="">
                     </div>
                     <div class="innovation__block_content">
-                        {% for element in innovationData.innovationItem.all %}
                         <div class="innovation__block_text">
-                            <h2 class="main__h2">01</h2>
-                            <h4 class="main__h4">{{element.itemTitle}}</h4>
-                            <p class="main__p">{{element.itemDescription}}</p>
+                            {% if forloop.counter < 10 %}
+                                <h2 class="main__h2">0{{ forloop.counter }}</h2>
+                            {% else %}
+                                <h2 class="main__h2">{{ forloop.counter }}</h2>
+                            {% endif %}
+                            <h4 class="main__h4">{{ differenceItem.itemTitle }}</h4>
+                            <p class="main__p">{{ differenceItem.itemDescription }}</p>
                         </div>
-                       {%endfor%}
                     </div>
+                </div>
+                {% endfor %}
+
+                <div class="innovation__block_line">
+                    {% comment %} <img src="{% static 'img/line.png' %}" alt="line"> {% endcomment %}
                 </div>
             </div>
         </div>

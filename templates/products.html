@@ -3,12 +3,14 @@
 
 
 {% block headerImage %}
-<div class="header__content header__content_products">
-    <div class="header__title">
-        <h3 class="main__h3">Продукты</h3>
-        <p>это то что расскажет о нас все</p>
+    {% for mainImage in mainImages %}
+    <div class="header__content">
+        <div class="header__title">
+            <h3 class="main__h3">{{ mainImage.title }}</h3>
+            <p>{{ mainImage.subtitle }}</p>
+        </div>
     </div>
-</div>
+    {% endfor %}
 {% endblock %}
 
 
@@ -26,25 +28,29 @@
                     {%endfor%}
                 </div>
             </div>
-            {%for categoryData in categories%}
+            {%for category in categories %}
             <div class="products__section_container">  
                 <div class="products__section_title">
-                    <img src={{categoryData.categoryIcon.url}} alt="">
-                    <h4>{{categoryData.categoryName}}</h4>
+                    <img src={{ category.categoryIcon.url }} alt="">
+                    <h4>{{ category.categoryName }}</h4>
                     <span></span>
                 </div>
                 <div class="products__section_text">
-                    <p class="main__p">{{categoryData.categoryDescription}}</p>
+                    <p class="main__p">{{ category.categoryDescription }}</p>
                 </div>
                 <div class="products__section_block">
-                    {% for p in products %}
-                        {% if p.category_id == categoryData.id %}
-                        <a href="{% url 'product' p.slug %}">
-                            <div class="products__section_item"> 
-                                <img src={{p.productImage.all.first.imageField.url}} alt="pill">
+                    {% for product in products %}
+                        {% if product.category_id == category.id %}
+                        <a href="{% url 'product' product.slug %}">
+                            <div class="products__section_item">
+                                {% for productImage in productImages %}
+                                    {% if productImage.product_id == product.id %}
+                                        <img src={{ productImage.imageField.url }} alt="pill">
+                                    {% endif %}
+                                {% endfor %}
                                 <div class="products__item_text">
-                                    <h4>{{ p.productName }}</h4>
-                                    <p>{{ p.productDescription }}</p>
+                                    <h4>{{ product.productName }}</h4>
+                                    <p>{{ product.productDescription }}</p>
                                 </div>
                             </div>
                         </a>
