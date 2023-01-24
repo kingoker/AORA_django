@@ -78,7 +78,7 @@ def product(request, slug):
 
 #Страница Контакты
 def contacts(request):
-    contactsPage = ContactInformation_Page.objects.all()
+    contactsPage = ContactInformation_Page.objects.all()[:1]
 
     context  = {
         'contactsPage': contactsPage
