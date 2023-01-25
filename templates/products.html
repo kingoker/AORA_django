@@ -5,6 +5,9 @@
 {% block headerImage %}
     {% for mainImage in mainImages %}
     <div class="header__content">
+        <div class="header__img">
+            <img src="{{ mainImage.image.url }}" alt="">
+        </div>
         <div class="header__title">
             <h3 class="main__h3">{{ mainImage.title }}</h3>
             <p>{{ mainImage.subtitle }}</p>
@@ -12,6 +15,7 @@
     </div>
     {% endfor %}
 {% endblock %}
+
 
 
 {% block content %}

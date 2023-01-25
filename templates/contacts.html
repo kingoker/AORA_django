@@ -3,12 +3,17 @@
 
 
 {% block headerImage %}
-    <div class="header__content header__content_products">
+    {% for mainImage in mainImages %}
+    <div class="header__content">
+        <div class="header__img">
+            <img src="{{ mainImage.image.url }}" alt="">
+        </div>
         <div class="header__title">
-            <h3 class="main__h3">Контакты</h3>
-            <p>мы всегда на связи</p>
+            <h3 class="main__h3">{{ mainImage.title }}</h3>
+            <p>{{ mainImage.subtitle }}</p>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}
 
 
@@ -25,28 +30,32 @@
                         </div>
                         <button type="button" class="sbm btn_link">Телеграм бот</button>
                     </div>
+                    <h5 class="organization__mainheader">{{ contactstData.organizationTitle }}</h5>
                     <div class="contacts__container_organization">
-                        <h5>{{ contactstData.organizationTitle}}</h5>
-                        {%for element in contactstData.organization.all %}
+                        {%for organization in organizations %}
                         <div class="contacts__container_text">
-                            <span>{{element.title}}</span> <br><br>
-                            <span>{{element.name}}</span> <br>
-                            <span>График работы:</span> {{element.workTime}} <br>
-                            <span>Адрес:</span> {{element.address}} <br>
-                            <span>Телефон:</span> {{element.phoneNumber1}} <br>
-                            <span>Отдел продаж:</span> {{element.salesNumber}} <br>
-                            <span>Aптека:</span> {{element.drugStoreNumber}} <br>
-                            <span>Web:</span> <a href="www.dekontfarm.uz">{{element.siteLink}}</a> <br>
-                            <span>E-mail:</span> <a href="mailto:info@dekontfarm.com">{{element.email}}</a>
+                            <span>{{ organization.title }}</span> <br><br>
+                            {% if organization.name %}
+                            <span>{{ organization.name }}</span> <br>
+                            {% endif %}
+                            <span>График работы:</span> {{ organization.workTime }} <br>
+                            <span>Адрес:</span> {{ organization.address }} <br>
+                            <span>Телефон:</span> {{ organization.phoneNumber1 }} <br>
+                            {% if organization.phoneNumber2 %}
+                            <span>Телефон:</span> {{ organization.phoneNumber2 }} <br>
+                            {% endif %}
+                            {% if organization.salesNumber %}
+                            <span>Отдел продаж:</span> {{ organization.salesNumber }} <br>
+                            {% endif %}
+                            {% if organization.drugStoreNumber %}
+                            <span>Aптека:</span> {{ organization.drugStoreNumber }} <br>
+                            {% endif %}
+                            {% if organization.siteLink %}
+                            <span>Web:</span> <a href="www.dekontfarm.uz">{{ organization.siteLink }}</a> <br>
+                            {% endif %}
+                            <span>E-mail:</span> <a href="mailto:info@dekontfarm.com">{{ organization.email }}</a>
                         </div>
                         {%endfor%}
-                        <!-- <div class="contacts__container_text">
-                            <span>{{element.organization.name}}</span> <br> <br>
-                            <p><span>График работы:</span> {{element.organization.workTime}} <br>
-                               <span> Адрес:</span> {{element.organization.address}} <br>
-                               <span> Телефон:</span> {{element.organization.phoneNumber1}} <br>
-                                <span>E-mail:</span> {{element.organization.email}} </p>
-                        </div> -->
                     </div>
                 </div>
             </div>   

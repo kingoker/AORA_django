@@ -78,10 +78,14 @@ def product(request, slug):
 
 #Страница Контакты
 def contacts(request):
+    mainImages = MainImage.objects.filter(contactPage__isnull=False)[:1]
     contactsPage = ContactInformation_Page.objects.all()[:1]
+    organizations = Organization.objects.filter(contactPage__isnull=False)
 
     context  = {
-        'contactsPage': contactsPage
+        'organizations': organizations,
+        'mainImages': mainImages,
+        'contactsPage': contactsPage,
     }
 
     return render(request, 'contacts.html', context)
