@@ -652,15 +652,26 @@ img{
     max-width: 334px;
 }
 .innovation__block_line{
-    width: 15px;
-    height: 100%;
-    background: linear-gradient(180deg, #6CD0E0 20.31%, rgba(255, 255, 255, 0) 22.92%);
+    width: 20px;
+    height: 0px;
+    background: linear-gradient(144deg,#2ad1ff, #4277f3 50%,#00DDEB);;
     border: 1px solid #6CD0E0;
-    border-radius: 3px;
+    border-radius: 5px;
     position: absolute;
-    top: 50%;
+    top: 0%;
     left: 52%;
-    transform:translate(50%, -50%);
+    animation: innovationProgress 1s linear infinite;
+}
+@keyframes innovationProgress{
+    0% {
+        background-position: 80% 0%;
+    }
+    50% {
+        background-position: 20% 100%;
+    }
+    100% {
+        background-position: 80% 0%;
+    }
 }
 
 

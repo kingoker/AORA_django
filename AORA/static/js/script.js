@@ -1,3 +1,4 @@
+// Свайпер на главной странице
 if (document.querySelector('.swiper')){
     var swiper = new Swiper(".swiper", {
         loop: true,
@@ -36,3 +37,17 @@ if(iconMenu){
         })
     })
 }
+
+
+// Прогресс бар на странице Инновации
+if (document.getElementsByClassName("innovation__block_line")){
+    var pogress = document.getElementsByClassName("innovation__block_line");
+    let scrollHeight = document.body.scrollHeight;
+    let innerHeight = window.innerHeight;
+    var totalHeight = scrollHeight-innerHeight;
+    window.onscroll = function(){
+        var progressHeight = (window.pageYOffset / totalHeight) * 100;
+        pogress[0].style.height = progressHeight + "%";
+    }
+}
+
