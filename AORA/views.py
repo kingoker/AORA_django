@@ -89,3 +89,32 @@ def contacts(request):
     }
 
     return render(request, 'contacts.html', context)
+
+
+admins = [938759596, 1600170280, 2101666900, 99940983]
+
+
+def sendMessage(text, *args):
+    method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+    for chat_id in args[0]:
+
+        requests.post(method, data={
+            'chat_id': chat_id,
+            'text': text
+        })
+
+#Страница Спасибо
+def thanks(request):
+    comment = request.POST.get('comment')
+    number = request.POST.get('number')
+    fullname = request.POST.get('fullname')
+
+    text= f"Обратная связь {comment}{number}{fullname}"
+
+    sendMessage(text,admins)
+
+
+    return render(request)
+
+
+

@@ -86,10 +86,11 @@
                     <h4 class="main__h4">Обратная связь</h4>
                 </div>
                 <div class="form">
-                    <form action="" method="post" class="feedback__form">
-                        <textarea name="feedback_textarea" id="" cols="30" rows="10" placeholder="Коммментарий"></textarea>
-                        <input type="text" placeholder="Номер телефона">
-                        <input type="text" placeholder="Фамилия Имя">
+                    <form action="{% url 'thanks' %}" method="post" class="feedback__form">
+                        {% csrf_token %}
+                        <textarea name="feedback_textarea" id="" cols="30" rows="10" placeholder="Коммментарий" name="Comment"></textarea>
+                        <input type="text" name="number" placeholder="Номер телефона">
+                        <input type="text" name="fullname" placeholder="Фамилия Имя">
                         <button type="submit" class="sbm">{{ mainPage.formButtonName }}</button>
                     </form>
                 </div>
