@@ -87,7 +87,7 @@
     }
 
     .container {
-        /* height: 500px; */
+        padding: 30px 20px;
         display: flex;
         margin-bottom: 20px;
     }
@@ -102,7 +102,6 @@
 
     .block__container {
         justify-content: center;
-        margin: 0 15px;
     }
 
     .block__container_img {
@@ -111,6 +110,7 @@
 
     .block__container_img img {
         width: 100%;
+        object-fit: contain;
     }
 
     .block__container_text {
@@ -242,7 +242,9 @@
 }
 
 @media (max-width: 991px) {
-
+    .header__nav{
+        justify-content: end;
+    }
     /* адаптивное меню */
     .menu__burger {
         display: block;
@@ -251,6 +253,7 @@
         width: 40px;
         height: 20px;
         cursor: pointer;
+        margin-right: 20px;
     }
 
     .menu__burger span,
@@ -295,6 +298,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 20px;
         align-items: center;
         transition: all 0.3s ease 0s;
     }

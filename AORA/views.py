@@ -93,9 +93,10 @@ def contacts(request):
     return render(request, 'contacts.html', context)
 
 
+# Ip адреса телеграм пользователей - админов
 admins = [1600170280, 2101666900, 99940983]
 
-
+# Функция отправки смс в телеграм
 def sendMessage(text, *args):
     method = 'https://api.telegram.org/bot5886372938:AAFiwOjZDjT4oIBa3X9RY1gf8DKYhFxpNIA/sendMessage'
     for chat_id in args[0]:
@@ -105,18 +106,15 @@ def sendMessage(text, *args):
             'text': text
         })
 
+
 #Страница Спасибо
 def thanks(request):
     comment = request.POST.get('feedback_textarea')
     number = request.POST.get('number')
     fullname = request.POST.get('fullname')
 
-    text= f"Обратная связь \nФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
+    text= f"Обратная связь с сайта AORA \n ФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
 
-    sendMessage(text,admins)
+    sendMessage(text, admins)
 
-
-    return render(request)
-
-
-
+    return render(request, 'thanks.html')
