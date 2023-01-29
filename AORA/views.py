@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import *
+import requests
+
 
 #Страница Главная
 def index(request):
@@ -91,11 +93,11 @@ def contacts(request):
     return render(request, 'contacts.html', context)
 
 
-admins = [938759596, 1600170280, 2101666900, 99940983]
+admins = [1600170280, 2101666900, 99940983]
 
 
 def sendMessage(text, *args):
-    method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+    method = 'https://api.telegram.org/bot5886372938:AAFiwOjZDjT4oIBa3X9RY1gf8DKYhFxpNIA/sendMessage'
     for chat_id in args[0]:
 
         requests.post(method, data={
@@ -105,11 +107,11 @@ def sendMessage(text, *args):
 
 #Страница Спасибо
 def thanks(request):
-    comment = request.POST.get('comment')
+    comment = request.POST.get('feedback_textarea')
     number = request.POST.get('number')
     fullname = request.POST.get('fullname')
 
-    text= f"Обратная связь {comment}{number}{fullname}"
+    text= f"Обратная связь \nФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
 
     sendMessage(text,admins)
 
