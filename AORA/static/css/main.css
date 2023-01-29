@@ -318,6 +318,7 @@ img{
 }
 
 .btn {
+    box-sizing: border-box;
     font-weight: 600;
     font-size: 26px;
     line-height: 32px;
@@ -325,11 +326,12 @@ img{
     border: 1px solid #40ABBD;
     border-radius: 5px;
     padding: 9px 30px;
+    transition: all 0.5s ease;
 }
 
 .btn:hover {
     color: #F5FBFB;
-    border: #F5FBFB;
+    /* border: none; */
     background-color: #40ABBD;
 }
 
@@ -425,10 +427,20 @@ img{
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    transition: all 0.5s ease;
 }
 
-.sbm:hover {
-    background: linear-gradient(91.13deg, #40ABBD 70%, #86F1FF 100%);
+.sbm:hover, .sbm:focus {
+    box-shadow: 0 0.5em 0.5em -0.3em #40ABBD;
+    transform: translateY(-0.25em);
+    /* background-position:20vw; */
+    /* animation:slidebg 2s linear infinite; */
+}
+
+@keyframes slidebg {
+    to {
+        background-position:20vw;
+    }
 }
 
 /* footer */
