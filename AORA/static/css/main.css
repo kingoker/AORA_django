@@ -1055,7 +1055,8 @@ img{
 }
 
 .product__description a:hover {
-    background: linear-gradient(91.13deg, #40ABBD 70%, #86F1FF 100%);
+    box-shadow: 0 0.5em 0.5em -0.3em #40ABBD;
+    transform: translateY(-0.25em);
 }
 
 .action__container {
