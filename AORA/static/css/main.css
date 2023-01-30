@@ -671,7 +671,7 @@ img{
 }
 .innovation__block_line{
     width: 20px;
-    height: 0px;
+    max-height: 100%;
     background: linear-gradient(144deg,#2ad1ff, #4277f3 50%,#00DDEB);;
     border: 1px solid #6CD0E0;
     border-radius: 5px;
