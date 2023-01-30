@@ -926,6 +926,9 @@ img{
 
 .beneficios__list_item img {
     margin-right: 10px;
+    height: 40px;
+    width: 40px;
+    object-fit: scale-down;
 }
 
 .beneficios__section_text {
