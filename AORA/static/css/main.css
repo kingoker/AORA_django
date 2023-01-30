@@ -602,6 +602,7 @@ img{
     height: 57px;
     width: auto;
     object-fit: scale-down;
+    margin-bottom: 15px;
 }
 
 .about__companies_points:last-child {
