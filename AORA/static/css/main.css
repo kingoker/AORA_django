@@ -997,6 +997,7 @@ p{
 .product__item_img img {
     border: 1px solid #8ED2DE;
     border-radius: 5px;
+    object-fit: contain;
 }
 
 .product__item_text {
