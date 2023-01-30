@@ -671,7 +671,7 @@ img{
     border-radius: 5px;
     position: absolute;
     top: 0%;
-    left: 52%;
+    left: 45%;
     animation: innovationProgress 1s linear infinite;
 }
 @keyframes innovationProgress{
