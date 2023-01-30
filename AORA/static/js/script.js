@@ -46,7 +46,7 @@ if (document.getElementsByClassName("innovation__block_line")){
     let innerHeight = window.innerHeight;
     var totalHeight = scrollHeight-innerHeight;
     window.onscroll = function(){
-        var progressHeight = ((window.pageYOffset / totalHeight) * 100)-300;
+        var progressHeight = ((window.pageYOffset / totalHeight) * 100)-100;
         pogress[0].style.height = progressHeight + "%";
     }
 }
