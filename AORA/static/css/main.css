@@ -1073,6 +1073,11 @@ img{
     align-items: center;
     justify-content: center;
 }
+.action__container_section img{
+    object-fit: scale-down;
+    width: 100%;
+    height: 100%;
+}
 
 .appropriate__products_container {
     max-width: 1200px;
