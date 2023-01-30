@@ -64,7 +64,7 @@ class ContactInformation_Page(models.Model):
         verbose_name_plural = '- Страница Контакты'
 
     def __str__(self):
-        return self.title
+        return 'Страница Контакты'
 
 
 # Модель для главной страницы
@@ -96,7 +96,7 @@ class MainPage(models.Model):
         verbose_name_plural = '- Страница Главная'
 
     def __str__(self):
-        return "- Страница Главная"
+        return "Страница Главная"
 
 
 # Модель элементов отличия
@@ -105,7 +105,7 @@ class DifferenceItem(models.Model):
     innovationPage = models.ForeignKey("InnovationPage", on_delete=models.CASCADE, verbose_name='Страница инноваций', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='differenceItem/', verbose_name='Картинка или иконка')
     itemTitle = models.CharField(max_length=255, verbose_name='Название')
-    itemDescription = models.CharField(max_length=255, verbose_name='Описание')
+    itemDescription = models.TextField(max_length=255, verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -121,7 +121,7 @@ class ScienceItem(models.Model):
     aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='ScienceItem/', verbose_name='Картинка или иконка')
     itemTitle = models.CharField(max_length=255, verbose_name='Название')
-    itemDescription = models.CharField(max_length=255, verbose_name='Описание')
+    itemDescription = models.TextField(max_length=255, verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -135,20 +135,20 @@ class ScienceItem(models.Model):
 class AboutPage(models.Model):
     topBlockImage = models.ImageField(upload_to='topBlockPhoto/', verbose_name='Верхний блок картинка', null=True)
     topBlockHeader = models.CharField(max_length=255, null=True, blank=True, verbose_name='Верхний блок название')
-    topBlockTitle = models.CharField(max_length=255, verbose_name='Верхний блок заголовок', null=True)
+    topBlockTitle = models.TextField(max_length=255, verbose_name='Верхний блок заголовок', null=True)
     topBlockSubtitle = models.TextField(verbose_name='Верхний блок подзаголовок', null=True)
 
-    differenceHeader = models.CharField(max_length=255, verbose_name='Название продукта')
-    differenceTitle = models.CharField(max_length=255, verbose_name='Заголовок продукта')
+    differenceHeader = models.CharField(max_length=255, verbose_name='Название отличий')
+    differenceTitle = models.TextField(max_length=255, verbose_name='Заголовок отличий')
     scienceHeader = models.CharField(max_length=255, verbose_name='Название науки')
-    scienceDescription = models.CharField(max_length=255, verbose_name='Заголовок науки')
+    scienceDescription = models.TextField(max_length=255, verbose_name='Заголовок науки')
 
     class Meta:
         verbose_name = '- Страница О нас'
         verbose_name_plural = '- Страница О нас'
 
     def __str__(self):
-        return "- Страница о нас"
+        return "Страница о нас"
 
 
 class InnovationPage(models.Model):
@@ -162,7 +162,7 @@ class InnovationPage(models.Model):
         verbose_name_plural = '- Страница Инноваций'
 
     def __str__(self):
-        return "- Страница Инноваций"
+        return "Страница Инноваций"
 
 
 class Category(models.Model):
@@ -213,7 +213,7 @@ class ProductsPage(models.Model):
         verbose_name_plural = '- Страница продуктов'
 
     def __str__(self):
-        return '- Страница продуктов'
+        return 'Страница продуктов'
 
 
 class Product(models.Model):

@@ -69,6 +69,8 @@ class OrganizationAdmin(admin.StackedInline):
     extra = 0
 
 
+
+
 # Страница Главная
 class MainPageAdmin(admin.ModelAdmin):
    inlines = [MainImageAdmin]
