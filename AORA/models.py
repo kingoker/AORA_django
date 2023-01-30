@@ -43,11 +43,6 @@ class Organization(models.Model):
 
 # Model for Organizations in Contact page
 class ContactInformation_Page(models.Model):
-    topBlockImage = models.ImageField(upload_to='topBlockPhoto/', verbose_name='Верхний блок картинка', null=True)
-    topBlockHeader = models.CharField(max_length=255, null=True, blank=True, verbose_name='Верхний блок название')
-    topBlockTitle = models.CharField(max_length=255, verbose_name='Верхний блок заголовок', null=True)
-    topBlockSubtitle = models.TextField(verbose_name='Верхний блок подзаголовок', null=True)
-
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = models.TextField(max_length=255,verbose_name='Описание')
     organizationTitle = models.CharField(max_length=255,verbose_name='Загаловок над организаций')
