@@ -55,10 +55,8 @@ def products(request):
     categories = Category.objects.all()
     productImages = ProductImage.objects.all()
 
-    print(productImages.values())
-
     context  = {
-        'productImages': productImages,
+        'productImages': productImages.values,
         'categories': categories,
         'products': products,
         'mainImages': mainImages,
@@ -69,10 +67,12 @@ def products(request):
 
 #Страница Продукта
 def product(request, slug):
-    product = Product.objects.filter(slug=slug)
+    products = Product.objects.filter(slug=slug)
+    benefits = Benefits.objects.filter(product__slug=slug)
 
     context  = {
-        "product": product
+        'benefits': benefits,
+        "products": products
     }
 
     return render(request, 'product.html', context)

@@ -10,24 +10,24 @@
 
 
 {% block content %}
+    {% for product in products %}
     <content class="content product">
         <div class="section__content">
             <div class="beneficios__container">
                 <div class="beneficios__container_section product__item_container">
-                    {%for productData in product%}
                     <div class="product__item_content">
                         <div class="product__item_img">
                             <div class="product__main_img">
-                                <img src="{{productData.productImage.all.first.imageField.url}}" alt="">
+                                <img src="{{ product.productMainImage.url }}" alt="">
                             </div>
-                            <div class="product__item_images">
-                                {%for element in productData.productImage.all %}
+                            <!-- <div class="product__item_images">
+                                {% for element in product.productImage.all %}
                                 <img src={{element.imageField.url}} alt="">
-                                {%endfor%}
-                            </div>                          
+                                {% endfor %}
+                            </div>                           -->
                         </div>
                         <div class="product__item_text">
-                            <h2>{{productData.productName}}</h2>
+                            <h2>{{ product.productName }}</h2>
                             <div class="product__rating">
                                 <div class="rating__stars">
                                     <div class="rating__stars_items">
@@ -64,94 +64,57 @@
                             </div>
                             <div class="product__description">
                                 <h3>Описание продукта</h3>
-                                <p>{{productData.productDescription}}</p>
-                                <h2>{{productData.productPrice}} сум</h2>
+                                <p>{{product.productDescription}}</p>
+                                <h2>{{product.productPrice}} сум</h2>
                                 <a target="_blank" href="https://t.me/DekontFarm_bot">купить продукт</a>
                             </div>
                         </div>
                     </div>
                     <div class="product__item_description">
                         <div class="beneficios__section_text">
-                            <p style="white-space:pre-line">{{productData.information}}</p>
+                            <p style="white-space:pre-line">{{ product.information }}</p>
                         </div>
                     </div>
-                    {%endfor%}
                 </div>
             </div>
             <div class="beneficios__container">
                 <h4 class="main__h4">Beneficios</h4>
                 <div class="beneficios__container_section">
                     <div class="beneficios__section_list">
+                        {% for benefit in benefits %}
                         <div class="beneficios__list_item">
-                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
-                            <p>уменьшения симптомов стресса</p>
+                            <img src="{{ benefit.imageField.url }}" alt="{{ benefit.title }}" width="40" height="40">
+                            <p>{{ benefit.title }}</p>
                         </div>
-                        <div class="beneficios__list_item">
-                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
-                            <p>уменьшения тревоги</p>
-                        </div>
-                        <div class="beneficios__list_item">
-                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
-                            <p>уменьшения депрессии</p>
-                        </div>
-                        <div class="beneficios__list_item">
-                            <img src="{% static 'img/moleculas-bioactivas 1.svg' %}" alt="" width="40" height="40">
-                            <p>улучшения функций нервной системы</p>
-                        </div>
-                        <div class="beneficios__list_item">
-                            <img src="img/iso.svg" alt="">
-                            <p>Медицинский сертификат</p>
-                        </div>
-                        <div class="beneficios__list_item">
-                            <img src="img/iso.svg" alt="">
-                            <p>Второй медицинский сертификат</p>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="beneficios__section_text">
-                        <p><span>Содержит:</span> 30 капсул  | <span>Суточная доза:</span> 2 капсулы в день вне зависимости от приема пищи, взрослым и детям старше 12 лет. Не превышайте рекомендуемую дозу.
-                        </p> <br><br>
-                        <p><span>Способ применения:</span> Принимать по 2 капсулы в день в течение не менее 30 дней. Согласно имеющейся технической информации ингредиенты продукта хорошо переносятся без побочных эффектов в указанных дозах.
-                        </p> <br><br>
-                        <p><span>Преимущества:</span> АКАФРОН — это натуральное решение для улучшения настроения и уменьшения симптомов стресса, тревоги, депрессии и улучшения функций нервной системы. АКАФРОН состоит из экстракта Аффрона® (Crocus sativus L.), стандартизированного на ≥3,5% лептикрозалидов и основных витаминов. Компоненты АКАФРОН разработаны для того, чтобы вызывать положительное влияние на наше настроение и когнитивные способности</p>
+                        <p>{{ product.beneficiosText }}</p>
                     </div>
                 </div>
             </div>
+            {% if product.mechanismImage %}
             <div class="action__container">
                 <h4 class="main__h4">Механизм действия</h4>
                 <div class="action__container_section">
-                    <img src="{% static 'img/aqaffron.jpg' %}" alt="">
+                    <img src="{{ product.mechanismImage.url }}" alt="">
                 </div>
             </div>
+            {% endif %}
             <div class="appropriate__products_container">
                 <h4 class="main__h4">Сопутствующие товары</h4>
                 <div class="products__section_block">
+                    {% for item in product.recomendedProducts.all|slice:":3" %}
                     <a href="{% url 'products' %}">
                         <div class="products__section_item">
-                            <img src="{% static 'img/pill.jpg' %}" alt="pill">
+                            <img src="{{ item.productMainImage.url }}" alt="pill">
                             <div class="products__item_text">
-                                <h4>Акафрон</h4>
-                                <p>Он снимает стресс и беспокойство, улучшая настроение и уменьшая бессонницу.  Исследования у взрослых, подростков и в качестве вспомогательного средства при лечении   антидепрессантами.</p>
+                                <h4>{{ item.productName }}</h4>
+                                <p>{{ item.productDescription }}</p>
                             </div>
                         </div>
                     </a>
-                    <a href="{% url 'products' %}">
-                        <div class="products__section_item">
-                            <img src="{% static 'img/pill.jpg' %}" alt="pill">
-                            <div class="products__item_text">
-                                <h4>Акафрон</h4>
-                                <p>Он снимает стресс и беспокойство, улучшая настроение и уменьшая бессонницу.  Исследования у взрослых, подростков и в качестве вспомогательного средства при лечении   антидепрессантами.</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{% url 'products' %}">
-                        <div class="products__section_item">
-                            <img src="{% static 'img/pill.jpg' %}" alt="pill">
-                            <div class="products__item_text">
-                                <h4>Акафрон</h4>
-                                <p>Он снимает стресс и беспокойство, улучшая настроение и уменьшая бессонницу.  Исследования у взрослых, подростков и в качестве вспомогательного средства при лечении антидепрессантами.</p>
-                            </div>
-                        </div>
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="feedback__container">
@@ -253,4 +216,5 @@
             </div>
         </div>
     </content>
+    {%endfor%}
 {% endblock %}

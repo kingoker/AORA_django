@@ -68,6 +68,11 @@ class OrganizationAdmin(admin.StackedInline):
     model = Organization
     extra = 0
 
+# inline QuestionAndAnswer
+class QuestionAndAnswerAdmin(admin.StackedInline):
+    model = QuestionAndAnswer
+    extra = 0
+
 
 
 
@@ -101,7 +106,7 @@ admin.site.register(InnovationPage, InnovationPageAdmin)
 
 # Вывод продуктов
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [BenefitsAdmin, ProductImageAdmin]
+    inlines = [BenefitsAdmin, ProductImageAdmin, QuestionAndAnswerAdmin]
     prepopulated_fields = {'slug': ('productName', )}
 
 admin.site.register(Product, ProductAdmin)

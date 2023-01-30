@@ -26,7 +26,7 @@
                     {%for categoryData in categories%}
                     <div class="block__container_item">
                         <a href="{% url 'products' %}">
-                            <img src={{categoryData.categoryIcon.url}} alt="">{{categoryData.categoryName}}
+                            <img src="{{ categoryData.categoryIcon.url }}" alt="">{{categoryData.categoryName}}
                         </a>
                     </div>
                     {%endfor%}
@@ -35,7 +35,7 @@
             {%for category in categories %}
             <div class="products__section_container">  
                 <div class="products__section_title">
-                    <img src={{ category.categoryIcon.url }} alt="">
+                    <img src="{{ category.categoryIcon.url }}" alt="">
                     <h4>{{ category.categoryName }}</h4>
                     <span></span>
                 </div>
@@ -47,11 +47,7 @@
                         {% if product.category_id == category.id %}
                         <a href="{% url 'product' product.slug %}">
                             <div class="products__section_item">
-                                {% for productImage in productImages %}
-                                    {% if productImage.product_id == product.id %}
-                                        <img src={{ productImage.imageField.url }} alt="pill">
-                                    {% endif %}
-                                {% endfor %}
+                                    <img src="{{ product.productMainImage.url }}" alt="{{ product.productName }}">
                                 <div class="products__item_text">
                                     <h4>{{ product.productName }}</h4>
                                     <p>{{ product.productDescription }}</p>

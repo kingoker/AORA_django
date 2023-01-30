@@ -115,7 +115,6 @@ class DifferenceItem(models.Model):
 class ScienceItem(models.Model):
     aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='ScienceItem/', verbose_name='Картинка или иконка')
-    itemTitle = models.CharField(max_length=255, verbose_name='Название')
     itemDescription = models.TextField(max_length=255, verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
@@ -124,7 +123,7 @@ class ScienceItem(models.Model):
         verbose_name_plural = 'Научное сообщество'
 
     def __str__(self):
-        return self.itemTitle
+        return 'Научное сообщество'
 
 
 class AboutPage(models.Model):
@@ -210,14 +209,29 @@ class ProductsPage(models.Model):
     def __str__(self):
         return 'Страница продуктов'
 
+class QuestionAndAnswer(models.Model):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')
+    question = models.TextField(verbose_name='Вопрос')
+    answer = models.TextField(verbose_name='Ответ')
+
+    class Meta:
+        verbose_name = 'Q&A'
+        verbose_name_plural = 'Q&A'
+
+    def __str__(self):
+        return self.question
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    productMainImage = models.ImageField(upload_to='products/',  verbose_name='Главная картинка продукта',  null=True)
     productName = models.CharField(max_length=255, verbose_name='Название продукта')
     productDescription = models.TextField(verbose_name='Описание продукта')
     productPrice = models.IntegerField(default='0', verbose_name='Цена продукта')
-    information = models.TextField(verbose_name='Информация', blank=True, null = True)
+    information = models.TextField(verbose_name='Информация', blank=True, null=True)
     beneficiosText = models.TextField(blank=True, null =True, verbose_name='Beneficios текст')
+    mechanismImage = models.ImageField(upload_to='mecanism/', blank=True, null =True, verbose_name='Картинка механизма действия')
+    recomendedProducts = models.ManyToManyField('Product', blank=True, verbose_name='Сопутствующие товары')
     slug = models.SlugField(max_length=255, unique=True, verbose_name='Slug')
     
     class Meta:
