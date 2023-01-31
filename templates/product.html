@@ -107,8 +107,8 @@
                 <h2 class="accordion__header">(Q&A) Часто задаваемые вопросы:</h2>
                 {% for questionAndAnswer in questionAndAnswers %}
                 <div class="tab">
-                    <input type="radio" name="acc" id="acc1">
-                    <label for="acc1">
+                    <input type="radio" name="acc" id="{{ questionAndAnswer.id }}">
+                    <label for="{{ questionAndAnswer.id }}">
                         <h4>{{ questionAndAnswer.question }}</h4>
                     </label>
                     <div class="accordion__content">
@@ -178,6 +178,8 @@
                             </div>
                             <p>От стресса помогло, осталось как то записаться на онлайн курсы astramed academy и начать
                                 новую независимую жизнь</p>
+                            <br />
+                            <hr align="right" width="100%" size="3" color="#939393" />
                         </div>
                         <div class="form review_form">
                             <form action="" method="post" class="feedback__form">

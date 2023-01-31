@@ -95,6 +95,15 @@ def contacts(request):
     return render(request, 'contacts.html', context)
 
 
+# Страница Важно
+def important(request):
+
+    context = {
+
+    }
+    return render(request, 'contacts.html', context)
+
+
 # Ip адреса телеграм пользователей - админов
 admins = [1600170280, 2101666900, 99940983]
 

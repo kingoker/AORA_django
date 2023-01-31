@@ -1,0 +1,24 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+
+
+{% block headerImage %}
+    <div class="header__content">
+        <div class="header__img">
+            <img src="{% static 'img/about.jpg' %}" alt="">
+        </div>
+        <div class="header__title">
+            <h3 class="main__h3">Такой страницы не существует</h3>
+            <p>пожалуйста перейдите на другую страницу через меню</p>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}            
+    <!-- <content class="content">
+        <div class="content__container">
+            Страница благодарности
+        </div>
+    </content> -->
+{% endblock %}
