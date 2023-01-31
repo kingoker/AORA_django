@@ -44,7 +44,7 @@ class Organization(models.Model):
 # Model for Organizations in Contact page
 class ContactInformation_Page(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
-    description = models.TextField(max_length=255,verbose_name='Описание')
+    description = models.TextField(verbose_name='Описание')
     organizationTitle = models.CharField(max_length=255,verbose_name='Загаловок над организаций')
 
     mapLink = models.URLField(verbose_name='Ссылка на карту')
@@ -80,7 +80,7 @@ class MainPage(models.Model):
     productionimage = models.ImageField(upload_to='Main_PageProductionPhoto/', verbose_name='Фото Продукта')
     productionBottonName = models.CharField(max_length=255, verbose_name='Название кнопки продукта')
 
-    whereToBuyheader = models.TextField(max_length=255, verbose_name='Название WhereToBuy')
+    whereToBuyheader = models.TextField(verbose_name='Название WhereToBuy')
     whereToBuydescription = models.TextField(verbose_name='Подзаголовок WhereToBuy')
     whereToBuyButtonName = models.CharField(max_length=255, verbose_name='Название кнопки WhereToBuy')
 
@@ -100,7 +100,7 @@ class DifferenceItem(models.Model):
     innovationPage = models.ForeignKey("InnovationPage", on_delete=models.CASCADE, verbose_name='Страница инноваций', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='differenceItem/', verbose_name='Картинка или иконка')
     itemTitle = models.CharField(max_length=255, verbose_name='Название')
-    itemDescription = models.TextField(max_length=255, verbose_name='Описание')
+    itemDescription = models.TextField(verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -115,7 +115,7 @@ class DifferenceItem(models.Model):
 class ScienceItem(models.Model):
     aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='ScienceItem/', verbose_name='Картинка или иконка')
-    itemDescription = models.TextField(max_length=255, verbose_name='Описание')
+    itemDescription = models.TextField(verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -129,13 +129,13 @@ class ScienceItem(models.Model):
 class AboutPage(models.Model):
     topBlockImage = models.ImageField(upload_to='topBlockPhoto/', verbose_name='Верхний блок картинка', null=True)
     topBlockHeader = models.CharField(max_length=255, null=True, blank=True, verbose_name='Верхний блок название')
-    topBlockTitle = models.TextField(max_length=255, verbose_name='Верхний блок заголовок', null=True)
+    topBlockTitle = models.TextField(verbose_name='Верхний блок заголовок', null=True)
     topBlockSubtitle = models.TextField(verbose_name='Верхний блок подзаголовок', null=True)
 
     differenceHeader = models.CharField(max_length=255, verbose_name='Название отличий')
-    differenceTitle = models.TextField(max_length=255, verbose_name='Заголовок отличий')
+    differenceTitle = models.TextField(verbose_name='Заголовок отличий')
     scienceHeader = models.CharField(max_length=255, verbose_name='Название науки')
-    scienceDescription = models.TextField(max_length=255, verbose_name='Заголовок науки')
+    scienceDescription = models.TextField(verbose_name='Заголовок науки')
 
     class Meta:
         verbose_name = '- Страница О нас'
