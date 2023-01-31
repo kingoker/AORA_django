@@ -7,6 +7,7 @@ class MainImage(models.Model):
     aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
     innovationPage = models.ForeignKey("InnovationPage", on_delete=models.CASCADE, verbose_name='Страница Инновации', null=True, blank=True, editable=None)
     productsPage = models.ForeignKey("ProductsPage", on_delete=models.CASCADE, verbose_name='Страница Продуктов', null=True, blank=True, editable=None)
+    importantPage = models.ForeignKey("ImportantPage", on_delete=models.CASCADE, verbose_name='Страница Важно', null=True, blank=True, editable=None)
     image = models.ImageField(upload_to='mainPhoto/', verbose_name='Фото')
     title = models.CharField(max_length=255, verbose_name='Заголовок') 
     subtitle = models.TextField(verbose_name='Подзаголовок') 
@@ -145,6 +146,17 @@ class AboutPage(models.Model):
         return "Страница о нас"
 
 
+class ImportantPage(models.Model):
+    importantText = models.TextField(verbose_name='Текст страницы')
+
+    class Meta:
+        verbose_name = '- Страница Важно'
+        verbose_name_plural = '- Страница Важно'
+
+    def __str__(self):
+        return "Страница важно"
+
+
 class InnovationPage(models.Model):
     topBlockImage = models.ImageField(upload_to='topBlockPhoto/', verbose_name='Верхний блок картинка', null=True)
     topBlockHeader = models.CharField(max_length=255, null=True, blank=True, verbose_name='Верхний блок название')
@@ -208,6 +220,7 @@ class ProductsPage(models.Model):
 
     def __str__(self):
         return 'Страница продуктов'
+
 
 class QuestionAndAnswer(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')

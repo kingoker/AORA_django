@@ -83,6 +83,13 @@ class MainPageAdmin(admin.ModelAdmin):
 admin.site.register(MainPage, MainPageAdmin)
 
 
+# Страница Важно
+class ImportantPageAdmin(admin.ModelAdmin):
+   inlines = [MainImageAdmin]
+
+admin.site.register(ImportantPage, ImportantPageAdmin)
+
+
 # Страница Контактной информации
 class ContactInformation_PageAdmin(admin.ModelAdmin):
     inlines = [MainImageAdmin, OrganizationAdmin]

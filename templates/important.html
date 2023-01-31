@@ -3,22 +3,24 @@
 
 
 {% block headerImage %}
+{% for mainImage in mainImages %}
     <div class="header__content">
         <div class="header__img">
-            <img src="{% static 'img/about.jpg' %}" alt="">
+            <img src="{{ mainImage.image.url }}" alt="">
         </div>
         <div class="header__title">
-            <h3 class="main__h3">Такой страницы не существует</h3>
-            <p>пожалуйста перейдите на другую страницу через меню</p>
+            <h3 class="main__h3">{{ mainImage.title }}</h3>
+            <p>{{ mainImage.subtitle }}</p>
         </div>
     </div>
+{% endfor %}
 {% endblock %}
 
 
 {% block content %}            
-    <!-- <content class="content">
-        <div class="content__container">
-            Страница благодарности
-        </div>
-    </content> -->
+{% for importantPage in importantPages %}
+    <div class="about__difference_container important__container">
+        <p>{{ importantPage.importantText }}</p>
+    </div>
+{% endfor %}
 {% endblock %}

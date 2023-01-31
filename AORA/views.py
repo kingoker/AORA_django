@@ -97,11 +97,15 @@ def contacts(request):
 
 # Страница Важно
 def important(request):
+    mainImages = MainImage.objects.filter(importantPage__isnull=False)[:1]
+    importantPages = ImportantPage.objects.all()[:1]
 
     context = {
-
+        'importantPages': importantPages,
+        'mainImages': mainImages,
     }
-    return render(request, 'contacts.html', context)
+
+    return render(request, 'important.html', context)
 
 
 # Ip адреса телеграм пользователей - админов

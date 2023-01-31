@@ -1274,6 +1274,15 @@ p{
     height: 600px;
 }
 
+
+/*  */
+.important__container{
+    margin: 70px auto;
+    min-height: 0px;
+    max-width: 700px;
+}
+
+
 /* Блок Q&A */
 .accordion__container{
     max-width: 1200px;
