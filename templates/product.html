@@ -101,6 +101,25 @@
                 </div>
             </div>
             {% endif %}
+
+            {% if questionAndAnswers %}
+            <div class="accordion__container">
+                <h2 class="accordion__header">(Q&A) Часто задаваемые вопросы:</h2>
+                {% for questionAndAnswer in questionAndAnswers %}
+                <div class="tab">
+                    <input type="radio" name="acc" id="acc1">
+                    <label for="acc1">
+                        <h4>{{ questionAndAnswer.question }}</h4>
+                    </label>
+                    <div class="accordion__content">
+                        <p>{{ questionAndAnswer.answer }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if product.recomendedProducts.all %}
             <div class="appropriate__products_container">
                 <h4 class="main__h4">Сопутствующие товары</h4>
                 <div class="products__section_block">
@@ -117,6 +136,8 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
+
             <div class="feedback__container">
                 <h4 class="main__h4">Отзывы</h4>
                 <div class="feedback__container_section">

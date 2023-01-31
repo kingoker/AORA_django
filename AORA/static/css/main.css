@@ -958,7 +958,7 @@ p{
 
 .product__item_img {
     width: 400px;
-    display: grid;
+    /* display: grid; */
     /* grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 15px;
@@ -1199,6 +1199,7 @@ p{
 /* contacts page */
 .contacts__container_section {
     /* margin: 0 auto; */
+    width: 100%;
 }
 
 .contacts {
@@ -1271,4 +1272,84 @@ p{
 .container__map {
     width: 100%;
     height: 600px;
+}
+
+/* Блок Q&A */
+.accordion__container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.accordion__header{
+    margin-top: 100px;
+}
+.accordion__header{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #2C2E2D;
+}
+.accordion__container .tab{
+    position: relative;
+    background: #fff;
+    padding: 0px 20px 20px;
+    box-shadow: 0px 2px 4px #d9d9d9;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.accordion__container .tab input{
+    appearance: none;
+}
+.accordion__container .tab label{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.accordion__container .tab label::after{
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.5);
+    transition: transform 0.6s;
+}
+.accordion__container .tab:hover label::after{
+    color: #333;
+}
+.accordion__container .tab input:checked ~ label::after{
+    transform: rotate(135deg);
+}
+.accordion__container .tab label h3{
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(91.13deg, #40ABBD 0%, #86F1FF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 5px;
+    color: #fff;
+    margin-right: 10px;
+    font-weight: 700;
+}
+.accordion__container .tab label h4{
+    margin: 0px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #01313D;
+    z-index: 10;
+}
+.accordion__container .tab .accordion__content{
+    max-height: 0px;
+    transition: 0.6s;
+    overflow: hidden;
+    background-color: #F5FBFB;
+}
+.accordion__container .tab input:checked ~ .accordion__content{
+    max-height: 100vh;
+    margin-top: 15px;
+    padding: 20px;
 }

@@ -69,8 +69,10 @@ def products(request):
 def product(request, slug):
     products = Product.objects.filter(slug=slug)
     benefits = Benefits.objects.filter(product__slug=slug)
+    questionAndAnswers = QuestionAndAnswer.objects.filter(product__slug=slug)
 
     context  = {
+        'questionAndAnswers': questionAndAnswers,
         'benefits': benefits,
         "products": products
     }
