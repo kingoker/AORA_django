@@ -133,3 +133,11 @@ def thanks(request):
     sendMessage(text, admins)
 
     return render(request, 'thanks.html')
+
+
+def base(request):
+    contacts = ContactInformation_Page.objects.all()
+    data = {
+        'contacts': contacts,
+    }
+    return data

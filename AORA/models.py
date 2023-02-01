@@ -1,4 +1,16 @@
 from django.db import models
+from io import BytesIO
+from PIL import Image
+from django.core.files import File
+
+def compress(image):
+    im = Image.open(image)
+    
+    im_io = BytesIO() 
+    im.save(im_io, 'JPEG', quality=60) 
+    new_image = File(im_io, name=image.name)
+    return new_image
+
 
 #Here we made a model for main slider photos in pages
 class MainImage(models.Model):
@@ -19,6 +31,10 @@ class MainImage(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+                new_image = compress(self.image)
+                self.image = new_image
+                super().save(*args, **kwargs)
 
 # Model for Organizations in Contact page
 class Organization(models.Model):
@@ -54,6 +70,8 @@ class ContactInformation_Page(models.Model):
     instagramLink = models.URLField(blank=True, null=True, verbose_name='Ссылка на Instagram')
     facebookLink = models.URLField(blank=True, null = True, verbose_name='Ссылка на Facebook')
     botShopLink = models.URLField(blank=True, null = True, verbose_name='Ссылка на Бот')
+    sitenumber1 = models.CharField(max_length=255,blank=True, null = True, verbose_name='Номер телефона сайта №1')
+    sitenumber2 = models.CharField(max_length=255,blank=True, null = True,  verbose_name='Номер телефона сайта №2')
 
     class Meta:
         verbose_name = '- Страница Контакты'
