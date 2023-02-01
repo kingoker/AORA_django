@@ -134,7 +134,7 @@ p{
 }
 
 .header__menu li {
-    padding: 0 50px;
+    padding: 0 30px;
 }
 
 .header__call {
@@ -260,7 +260,9 @@ p{
 .block__container {
     display: flex;
 }
-
+.gap-50{
+    gap: 50px;
+}
 .block__container_img {
     max-width: 467px;
     max-height: 467px;
@@ -268,13 +270,18 @@ p{
     border-radius: 5px;
     overflow: hidden;
 }
+.block__container_img img{
+    object-fit: contain;
+}
+.mr-0{
+    margin-right: 0px;
+}
 .block__container_text {
     width: 467px;
 }
 
 /* inn */
 .inn__container {
-    height: 315px;
     max-width: 1200px;
     margin: 100px auto;
 }
@@ -628,13 +635,14 @@ p{
 }
 
 /* innovation page */
+.mb-0{
+    margin-bottom: 0px;
+}
 .header__content_inn {
     background: url(../img/inn_bg.jpg) 100% 100% no-repeat;
     background-size: cover;
 }
-
 .innovation__container {
-    position: relative;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -642,7 +650,6 @@ p{
     gap: 70px;
     margin-bottom: 100px;
 }
-
 .innovation__container_block {
     height: 1700px;
     width: 720px;
@@ -668,31 +675,28 @@ p{
     flex-direction: column;
     justify-content: space-between;
 }
-
 .innovation__block_text {
     max-width: 334px;
 }
-.innovation__block_line{
-    width: 20px;
-    max-height: 100%;
-    background: linear-gradient(144deg,#2ad1ff, #4277f3 50%,#00DDEB);;
-    border: 1px solid #6CD0E0;
-    border-radius: 5px;
-    position: absolute;
-    top: 0%;
-    left: 45%;
-    animation: innovationProgress 1s linear infinite;
+.sience__container{
+    background-image: linear-gradient(to left, #fafafa, #f4f3f3);
+    box-shadow: none;
+    position: unset;
 }
-@keyframes innovationProgress{
-    0% {
-        background-position: 80% 0%;
-    }
-    50% {
-        background-position: 20% 100%;
-    }
-    100% {
-        background-position: 80% 0%;
-    }
+.sience__list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.sience__item{
+    max-width: 320px;
+}
+.sience__img{
+    margin-bottom: 10px;
+    width: 150px;
+    height: 80px;
+    object-fit: contain;
 }
 
 

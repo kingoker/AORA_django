@@ -40,7 +40,6 @@
 
     .inn__container {
         width: 90%;
-        height: 450px;
         padding-top: 100px;
     }
 
@@ -473,7 +472,6 @@
     }
 
     .inn__container {
-        height: 650px;
         width: 90%;
     }
 
@@ -517,6 +515,9 @@
         /* grid-column-gap: 85px; */
         /* grid-row-gap: 15px; */
     }
+    .sience__item{
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 767px) {
@@ -533,10 +534,6 @@
 
     .innovation__block_text {
         width: 297px;
-    }
-
-    .inn__container {
-        height: 600px;
     }
 
     .contacts {
@@ -678,7 +675,9 @@
         height: 100%;
         padding: 10px;
     }
-
+    .sience__container{
+        padding: 50px 10px;
+    }
     .block__container_text p {
         padding-bottom: 20px;
     }

@@ -98,7 +98,6 @@ class MainPage(models.Model):
 # Модель элементов отличия
 class DifferenceItem(models.Model):
     aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
-    innovationPage = models.ForeignKey("InnovationPage", on_delete=models.CASCADE, verbose_name='Страница инноваций', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='differenceItem/', verbose_name='Картинка или иконка')
     itemTitle = models.CharField(max_length=255, verbose_name='Название')
     itemDescription = models.TextField(verbose_name='Описание')
@@ -115,6 +114,7 @@ class DifferenceItem(models.Model):
 # Модель элементов научного сообщества
 class ScienceItem(models.Model):
     aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
+    innovationPage = models.ForeignKey("InnovationPage", on_delete=models.CASCADE, verbose_name='Страница инноваций', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='ScienceItem/', verbose_name='Картинка или иконка')
     itemDescription = models.TextField(verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
@@ -162,6 +162,22 @@ class InnovationPage(models.Model):
     topBlockHeader = models.CharField(max_length=255, null=True, blank=True, verbose_name='Верхний блок название')
     topBlockTitle = models.CharField(max_length=255, verbose_name='Верхний блок заголовок', null=True)
     topBlockSubtitle = models.TextField(verbose_name='Верхний блок подзаголовок', null=True)
+
+    productionheader = models.CharField(max_length=255, verbose_name='Название создания продуктов', null=True)
+    productiontitle = models.CharField(max_length=255, verbose_name='Заголовок создания продуктов', null=True, blank=True)
+    productionsubtitle = models.TextField(verbose_name='Подзаголовок создания продуктов', null=True)
+    productionimage = models.ImageField(upload_to='innovationPageProductionPhoto/', verbose_name='Фото блока создания продуктов', null=True)
+    productionBottonName = models.CharField(max_length=255, verbose_name='Название кнопки продукта', null=True)
+
+    sienceCommunityHeader = models.CharField(max_length=255, verbose_name='Название блока научного сообщества', null=True)
+    sienceCommunityTitle = models.CharField(max_length=255, verbose_name='Заголовок блока научного сообщества', null=True, blank=True)
+    sienceCommunitySubtitle = models.TextField(verbose_name='Подзаголовок блока научного сообщества', null=True)
+    sienceCommunityImage = models.ImageField(upload_to='innovationPageProductionPhoto/', verbose_name='Фото блока научного сообщества', null=True)
+
+    integrationHeader = models.CharField(max_length=255, verbose_name='Название блока интеграций', null=True)
+    integrationTitle = models.CharField(max_length=255, verbose_name='Заголовок блока интеграций', null=True, blank=True)
+    integrationSubtitle = models.TextField(verbose_name='Подзаголовок блока интеграций', null=True)
+    integrationImage = models.ImageField(upload_to='innovationPageIntegrationPhoto/', verbose_name='Фото блока интеграций', null=True)
 
     class Meta:
         verbose_name = '- Страница Инноваций'

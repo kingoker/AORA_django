@@ -106,7 +106,7 @@ admin.site.register(AboutPage, AboutPageAdmin)
 
 # Страница Инновации
 class InnovationPageAdmin(admin.ModelAdmin):
-    inlines = [MainImageAdmin, DifferenceItemAdmin]
+    inlines = [MainImageAdmin, ScienceItemAdmin]
 
 admin.site.register(InnovationPage, InnovationPageAdmin)
 

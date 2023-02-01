@@ -36,11 +36,11 @@ def about(request):
 #Страница Инноваций
 def innovation(request):
     mainImages = MainImage.objects.filter(innovationPage__isnull=False)[:1]
-    differenceItems = DifferenceItem.objects.filter(innovationPage__isnull=False)
     innovationPages = InnovationPage.objects.all()[:1]
+    scienceItems = ScienceItem.objects.filter(innovationPage__isnull=False)
 
     context  = {
-        'differenceItems': differenceItems,
+        'scienceItems': scienceItems,
         'mainImages': mainImages,
         'innovationPages': innovationPages,
     }
