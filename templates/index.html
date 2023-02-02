@@ -90,7 +90,7 @@
                         {% csrf_token %}
                         <textarea name="feedback_textarea" id="" cols="30" rows="10" placeholder="Коммментарий"></textarea>
                         <input type="text" name="number" placeholder="Номер телефона">
-                        <input type="text" name="fullname" placeholder="Фамилия Имя">
+                        <input type="text" name="fullname" placeholder="Фамилия Имя" required>
                         <button type="submit" class="sbm">{{ mainPage.formButtonName }}</button>
                     </form>
                 </div>

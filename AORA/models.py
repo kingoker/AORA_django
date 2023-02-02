@@ -7,7 +7,7 @@ def compress(image):
     im = Image.open(image)
     
     im_io = BytesIO() 
-    im.save(im_io, 'JPEG', quality=60) 
+    im.save(im_io, 'PNG', quality=60) 
     new_image = File(im_io, name=image.name)
     return new_image
 
@@ -287,3 +287,18 @@ class Product(models.Model):
 
     def __str__(self):
         return self.productName
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Категория', blank=True, null =True)
+    fullname = models.CharField(max_length=255, verbose_name='ФИО', null=True)
+    comment = models.TextField(verbose_name='Отзыв', blank=True, null=True)
+    number = models.CharField(max_length=255, verbose_name='Номер телефона', null=True)
+    rate = models.CharField(max_length=255, verbose_name='Рейтинг', null=True)
+
+    class Meta:
+        verbose_name = 'Отзывы'
+        verbose_name_plural = 'Отзывы'
+
+    def __str__(self):
+        return self.fullname

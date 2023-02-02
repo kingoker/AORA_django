@@ -31,7 +31,15 @@
                             <div class="product__rating">
                                 <div class="rating__stars">
                                     <div class="rating__stars_items">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                        {% for i in range %}
+                                            {% if i </div>= rate%}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
+                                                    class="bi bi-star-fill" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                                </svg>
+                                            
+                                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
                                             class="bi bi-star-fill" viewBox="0 0 16 16">
                                             <path
                                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -45,17 +53,15 @@
                                             class="bi bi-star-fill" viewBox="0 0 16 16">
                                             <path
                                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
-                                            class="bi bi-star-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                        </svg>
+                                        </svg> -->
+                                        {%else%}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#8ED2DE"
                                             class="bi bi-star-fill" viewBox="0 0 16 16">
                                             <path
                                                 d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                         </svg>
+                                        {%endif%}
+                                        {%endfor%}
                                     </div>
                                 </div>
                                 <div class="rating__reviews">
@@ -182,10 +188,11 @@
                             <hr align="right" width="100%" size="3" color="#939393" />
                         </div>
                         <div class="form review_form">
-                            <form action="" method="post" class="feedback__form">
+                            <form action="{% url 'thanks' %}" method="post" class="feedback__form">
+                                {% csrf_token %}
                                 <div class="rating">
                                     <div class="rating__items">
-                                        <input id="rating__5" type="radio" class="rating__item" name="rating">
+                                        <input id="rating__5" type="radio" class="rating__item" name="rating__5" value="5">
                                         <label for="rating__5" class="rating__label">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
                                                 fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -193,7 +200,7 @@
                                                     d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                             </svg>
                                         </label>
-                                        <input id="rating__4" type="radio" class="rating__item" name="rating">
+                                        <input id="rating__4" type="radio" class="rating__item" name="rating__4" value="4">
                                         <label for="rating__4" class="rating__label">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
                                                 fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -201,7 +208,7 @@
                                                     d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                             </svg>
                                         </label>
-                                        <input id="rating__3" type="radio" class="rating__item" name="rating">
+                                        <input id="rating__3" type="radio" class="rating__item" name="rating__3" value="3">
                                         <label for="rating__3" class="rating__label">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
                                                 fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -209,7 +216,7 @@
                                                     d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                             </svg>
                                         </label>
-                                        <input id="rating__2" type="radio" class="rating__item" name="rating">
+                                        <input id="rating__2" type="radio" class="rating__item" name="rating__2" value="2">
                                         <label for="rating__2" class="rating__label">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
                                                 fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -217,7 +224,7 @@
                                                     d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                                             </svg>
                                         </label>
-                                        <input id="rating__1" type="radio" class="rating__item" name="rating">
+                                        <input id="rating__1" type="radio" class="rating__item" name="rating__1" value="1">
                                         <label for="rating__1" class="rating__label">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28"
                                                 fill="#8ED2DE" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -229,8 +236,8 @@
                                 </div>
                                 <textarea name="feedback_textarea" id="" cols="30" rows="10"
                                     placeholder="Отзыв"></textarea>
-                                <input type="text" placeholder="Номер телефона">
-                                <input type="text" placeholder="Фамилия Имя">
+                                <input type="text" placeholder="Номер телефона" name="number">
+                                <input type="text" placeholder="Фамилия Имя" name="fullname">
                                 <button type="submit" class="sbm">Оставить отзыв</button>
                             </form>
                         </div>

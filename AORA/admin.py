@@ -128,3 +128,4 @@ admin.site.register(ProductsPage, ProductsPageAdmin)
 
 # Вывод Категорий
 admin.site.register(Category)
+admin.site.register(Review)

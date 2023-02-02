@@ -70,11 +70,22 @@ def product(request, slug):
     products = Product.objects.filter(slug=slug)
     benefits = Benefits.objects.filter(product__slug=slug)
     questionAndAnswers = QuestionAndAnswer.objects.filter(product__slug=slug)
+    reviews = Review.objects.filter(product__slug=slug)
+    rate = 0
+    
+    for review in reviews:
+        rate += int(review.rate)
+    
+    rate = int(rate/len(reviews))
 
+    print(rate)
     context  = {
         'questionAndAnswers': questionAndAnswers,
         'benefits': benefits,
-        "products": products
+        'products': products,
+        'rate': rate,
+        'range': range(1,6)
+        
     }
 
     return render(request, 'product.html', context)
@@ -124,13 +135,42 @@ def sendMessage(text, *args):
 
 #Страница Спасибо
 def thanks(request):
+    path = str(request.META.get('HTTP_REFERER'))
     comment = request.POST.get('feedback_textarea')
     number = request.POST.get('number')
     fullname = request.POST.get('fullname')
+    rate = '1'
+    
 
-    text= f"Обратная связь с сайта AORA \n ФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
+    if 'product' in path:
+        for i in range(1,6):
+            if request.POST.get(f"rating__{i}") != None:
+                rate = f'{i}'
+        product = Product.objects.get(slug=path.split('/')[4])
+        
+        #products = product.values('productName')[0]['productName']
 
-    sendMessage(text, admins)
+        print(products)
+        review = Review()
+        review.product = product
+        review.fullname = fullname
+        review.comment = comment
+        review.number = number
+        review.rate = rate
+        review.save()
+
+    else:
+        
+
+        text= f"Обратная связь с сайта AORA \n ФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
+        review.fullname = fullname
+        review.comment = comment
+        review.number = number
+        review.save()
+
+        sendMessage(text, admins)
+
+    
 
     return render(request, 'thanks.html')
 
