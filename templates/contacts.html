@@ -30,7 +30,11 @@
                         </div>
                         <button type="button" class="sbm btn_link">Телеграм бот</button>
                     </div>
+                    {% if contactstData.organizationTitle %}
                     <h5 class="organization__mainheader">{{ contactstData.organizationTitle }}</h5>
+                    {% else %}
+                        <h5 class="organization__mainheader"></h5>
+                    {% endif %}
                     <div class="contacts__container_organization">
                         {%for organization in organizations %}
                         <div class="contacts__container_text">
@@ -40,10 +44,11 @@
                             {% endif %}
                             <span>График работы:</span> {{ organization.workTime }} <br>
                             <span>Адрес:</span> {{ organization.address }} <br>
-                            <span>Телефон:</span> {{ organization.phoneNumber1 }} <br>
+                            <span>Телефоны:</span> {{ organization.phoneNumber1 }};
                             {% if organization.phoneNumber2 %}
-                            <span>Телефон:</span> {{ organization.phoneNumber2 }} <br>
-                            {% endif %}
+                                {{ organization.phoneNumber2 }}
+                            {% endif %}<br>
+                            
                             {% if organization.salesNumber %}
                             <span>Отдел продаж:</span> {{ organization.salesNumber }} <br>
                             {% endif %}

@@ -62,7 +62,7 @@ class Organization(models.Model):
 class ContactInformation_Page(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание')
-    organizationTitle = models.CharField(max_length=255,verbose_name='Загаловок над организаций')
+    organizationTitle = models.CharField(max_length=255,verbose_name='Загаловок над организаций', blank=True, null=True,)
 
     mapLink = models.URLField(verbose_name='Ссылка на карту')
 

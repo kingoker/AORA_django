@@ -135,6 +135,7 @@ def thanks(request):
     return render(request, 'thanks.html')
 
 
+# Вывод данных на всех страницах
 def base(request):
     contacts = ContactInformation_Page.objects.all()
     data = {
