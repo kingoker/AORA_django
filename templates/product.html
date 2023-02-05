@@ -32,7 +32,7 @@
                                 <div class="rating__stars">
                                     <div class="rating__stars_items">
                                         {% for i in range %}
-                                            {% if i </div>= rate%}
+                                            {% if i <= rate%}
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="#F1B000"
                                                     class="bi bi-star-fill" viewBox="0 0 16 16">
                                                     <path
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                                 <div class="rating__reviews">
-                                    <p>(17 отзывов)</p>
+                                    <p> (Кол-во отзывов: <b>{{total_reviews}}</b>)</p>
                                 </div>
                             </div>
                             <div class="product__description">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="beneficios__container">
-                <h4 class="main__h4">Beneficios</h4>
+                <h4 class="main__h4">Преимущества</h4>
                 <div class="beneficios__container_section">
                     <div class="beneficios__section_list">
                         {% for benefit in benefits %}
@@ -135,7 +135,7 @@
                             <img src="{{ item.productMainImage.url }}" alt="pill">
                             <div class="products__item_text">
                                 <h4>{{ item.productName }}</h4>
-                                <p>{{ item.productDescription }}</p>
+                                <p>{{ item.productDescription|truncatechars:255 }}</p>
                             </div>
                         </div>
                     </a>

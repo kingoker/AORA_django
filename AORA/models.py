@@ -2,14 +2,15 @@ from django.db import models
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
+import numpy as np
+import cv2
+import sys
+import os
 
-def compress(image):
-    im = Image.open(image)
-    
-    im_io = BytesIO() 
-    im.save(im_io, 'PNG', quality=60) 
-    new_image = File(im_io, name=image.name)
-    return new_image
+
+def compress(image, bits=8,  binary=True):
+
+    return image
 
 
 #Here we made a model for main slider photos in pages
@@ -32,6 +33,7 @@ class MainImage(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+                print(self.image.url)
                 new_image = compress(self.image)
                 self.image = new_image
                 super().save(*args, **kwargs)
@@ -44,7 +46,6 @@ class Organization(models.Model):
     workTime = models.CharField(max_length=100, verbose_name='График работы')
     address = models.CharField(max_length=255, verbose_name='Адрес')
     phoneNumber1 = models.CharField(max_length=100,verbose_name='Телефон')
-    phoneNumber2 = models.CharField(max_length=100, null=True, blank=True, verbose_name='Телефон2')
     salesNumber = models.CharField(max_length=100, null=True, blank=True, verbose_name='Номер Отдела продаж')
     drugStoreNumber = models.CharField(max_length=100, null=True, blank=True, verbose_name='Номер Аптеки')
     siteLink = models.URLField(blank=True, null = True, verbose_name='Ссылка на сайт')
@@ -71,7 +72,6 @@ class ContactInformation_Page(models.Model):
     facebookLink = models.URLField(blank=True, null = True, verbose_name='Ссылка на Facebook')
     botShopLink = models.URLField(blank=True, null = True, verbose_name='Ссылка на Бот')
     sitenumber1 = models.CharField(max_length=255,blank=True, null = True, verbose_name='Номер телефона сайта №1')
-    sitenumber2 = models.CharField(max_length=255,blank=True, null = True,  verbose_name='Номер телефона сайта №2')
 
     class Meta:
         verbose_name = '- Страница Контакты'
@@ -115,7 +115,7 @@ class MainPage(models.Model):
 
 # Модель элементов отличия
 class DifferenceItem(models.Model):
-    aboutPage = models.ForeignKey("AboutPage", on_delete=models.CASCADE, verbose_name='Страница о нас', null=True, blank=True, editable=None)
+    innovationPage = models.ForeignKey("InnovationPage", on_delete=models.CASCADE, verbose_name='Страница инноваций', null=True, blank=True, editable=None)
     itemImage = models.ImageField(upload_to='differenceItem/', verbose_name='Картинка или иконка')
     itemTitle = models.CharField(max_length=255, verbose_name='Название')
     itemDescription = models.TextField(verbose_name='Описание')
@@ -151,8 +151,12 @@ class AboutPage(models.Model):
     topBlockTitle = models.TextField(verbose_name='Верхний блок заголовок', null=True)
     topBlockSubtitle = models.TextField(verbose_name='Верхний блок подзаголовок', null=True)
 
-    differenceHeader = models.CharField(max_length=255, verbose_name='Название отличий')
-    differenceTitle = models.TextField(verbose_name='Заголовок отличий')
+    productionheader = models.CharField(max_length=255, verbose_name='Название создания продуктов', null=True)
+    productiontitle = models.CharField(max_length=255, verbose_name='Заголовок создания продуктов', null=True, blank=True)
+    productionsubtitle = models.TextField(verbose_name='Подзаголовок создания продуктов', null=True)
+    productionimage = models.ImageField(upload_to='innovationPageProductionPhoto/', verbose_name='Фото блока создания продуктов', null=True)
+    productionBottonName = models.CharField(max_length=255, verbose_name='Название кнопки продукта', null=True)
+
     scienceHeader = models.CharField(max_length=255, verbose_name='Название науки')
     scienceDescription = models.TextField(verbose_name='Заголовок науки')
 
@@ -181,11 +185,8 @@ class InnovationPage(models.Model):
     topBlockTitle = models.CharField(max_length=255, verbose_name='Верхний блок заголовок', null=True)
     topBlockSubtitle = models.TextField(verbose_name='Верхний блок подзаголовок', null=True)
 
-    productionheader = models.CharField(max_length=255, verbose_name='Название создания продуктов', null=True)
-    productiontitle = models.CharField(max_length=255, verbose_name='Заголовок создания продуктов', null=True, blank=True)
-    productionsubtitle = models.TextField(verbose_name='Подзаголовок создания продуктов', null=True)
-    productionimage = models.ImageField(upload_to='innovationPageProductionPhoto/', verbose_name='Фото блока создания продуктов', null=True)
-    productionBottonName = models.CharField(max_length=255, verbose_name='Название кнопки продукта', null=True)
+    differenceHeader = models.CharField(max_length=255, verbose_name='Название блока наше отличие', null=True)
+    differenceTitle = models.CharField(max_length=255, verbose_name='Заголовок блока наше отличие', null=True)
 
     sienceCommunityHeader = models.CharField(max_length=255, verbose_name='Название блока научного сообщества', null=True)
     sienceCommunityTitle = models.CharField(max_length=255, verbose_name='Заголовок блока научного сообщества', null=True, blank=True)

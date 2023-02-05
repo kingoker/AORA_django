@@ -35,22 +35,26 @@
                 </div>
             </div>
 
-            <div class="content__container_diff aic">
-                <div class="products__container">
-                    <div class="block__container_img">
-                        <img src="{{ innovationPage.productionimage.url }}" alt="products">
+            <!-- Наши отличия -->
+            <div class="about__difference_container">
+                <div class="about__difference_title">
+                    <h5 class="main__h5">
+                        {{ innovationPage.differenceHeader }}
+                    </h5>
+                    <h4 class="main__h4">{{ innovationPage.differenceTitle }}</h4>
+                </div>
+                <div class="about__difference_block">
+                    {% for differenceItem in differenceItems%}
+                    <div class="about__difference_points">
+                        <img src="{{ differenceItem.itemImage.url }}" alt="">
+                        <h4 class="main__h4">{{ differenceItem.itemTitle }}</h4>
+                        <p class="main__p">{{ differenceItem.itemDescription }}</p>
                     </div>
-                    <div class="products__text">
-                        <h5 class="main__h5">{{ innovationPage.productionheader }}</h5>
-                        {% if innovationPage.productiontitle %}
-                        <h4 class="main__h4">{{ innovationPage.productiontitle }}</h4>
-                        {% endif %}
-                        <p class="main__p">{{ innovationPage.productionsubtitle }}</p>
-                        <a class="btn" href="/products/">{{ innovationPage.productionBottonName }}</a>
-                    </div>   
+                    {% endfor %}
                 </div>
             </div>
 
+            <!-- Научное сообщество -->
             <div class="inn__container">
                 <div class="block__container">
                     <div class="container__text_inn">

@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
+
 * {
     font-family: 'Montserrat', sans-serif;
     transition: all 0.5ms ease;
+    scroll-behavior: smooth;
 }
 img{
     width: 100%;

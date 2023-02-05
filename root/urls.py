@@ -24,3 +24,6 @@ urlpatterns = [
     path('', include('AORA.urls')),
     
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'AORA.views.handler404'

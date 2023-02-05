@@ -19,13 +19,11 @@ def index(request):
 #Страница О нас
 def about(request):
     mainImages = MainImage.objects.filter(aboutPage__isnull=False)[:1]
-    differenceItems = DifferenceItem.objects.filter(aboutPage__isnull=False)[:6]
     scienceItems = ScienceItem.objects.filter(aboutPage__isnull=False)
     aboutPages = AboutPage.objects.all()[:1]
 
     context  = {
         'scienceItems': scienceItems,
-        'differenceItems': differenceItems,
         'mainImages': mainImages,
         'aboutPages': aboutPages,
     }
@@ -38,8 +36,10 @@ def innovation(request):
     mainImages = MainImage.objects.filter(innovationPage__isnull=False)[:1]
     innovationPages = InnovationPage.objects.all()[:1]
     scienceItems = ScienceItem.objects.filter(innovationPage__isnull=False)
+    differenceItems = DifferenceItem.objects.filter(innovationPage__isnull=False)[:6]
 
     context  = {
+        'differenceItems': differenceItems,
         'scienceItems': scienceItems,
         'mainImages': mainImages,
         'innovationPages': innovationPages,
@@ -75,8 +75,8 @@ def product(request, slug):
     
     for review in reviews:
         rate += int(review.rate)
-    
-    rate = int(rate/len(reviews))
+    if len(reviews) > 0:
+        rate = int(rate/len(reviews))
 
     print(rate)
     context  = {
@@ -84,8 +84,8 @@ def product(request, slug):
         'benefits': benefits,
         'products': products,
         'rate': rate,
-        'range': range(1,6)
-        
+        'range': range(1,6),
+        'total_reviews': len(reviews),
     }
 
     return render(request, 'product.html', context)
@@ -148,7 +148,7 @@ def thanks(request):
                 rate = f'{i}'
         product = Product.objects.get(slug=path.split('/')[4])
         
-        #products = product.values('productName')[0]['productName']
+        
 
         print(products)
         review = Review()
@@ -182,3 +182,11 @@ def base(request):
         'contacts': contacts,
     }
     return data
+
+
+
+
+def handler404(request,exception):
+    print(exception)
+
+    return render(request, '404.html')

@@ -25,16 +25,16 @@
                 <div class="block__container_products">
                     {%for categoryData in categories%}
                     <div class="block__container_item">
-                        <a href="{% url 'products' %}">
+                        <a href="#{{ categoryData.categoryName|first }}">
                             <img src="{{ categoryData.categoryIcon.url }}" alt="">{{categoryData.categoryName}}
                         </a>
                     </div>
                     {%endfor%}
                 </div>
             </div>
-            {%for category in categories %}
+            {% for category in categories %}
             <div class="products__section_container">  
-                <div class="products__section_title">
+                <div class="products__section_title" id="{{ category.categoryName|first }}">
                     <img src="{{ category.categoryIcon.url }}" alt="">
                     <h4>{{ category.categoryName }}</h4>
                     <span></span>
@@ -50,7 +50,7 @@
                                     <img src="{{ product.productMainImage.url }}" alt="{{ product.productName }}">
                                 <div class="products__item_text">
                                     <h4>{{ product.productName }}</h4>
-                                    <p>{{ product.productDescription }}</p>
+                                    <p>{{ product.productDescription|truncatechars:255 }}</p>
                                 </div>
                             </div>
                         </a>

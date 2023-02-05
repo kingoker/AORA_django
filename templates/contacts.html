@@ -44,10 +44,7 @@
                             {% endif %}
                             <span>График работы:</span> {{ organization.workTime }} <br>
                             <span>Адрес:</span> {{ organization.address }} <br>
-                            <span>Телефоны:</span> {{ organization.phoneNumber1 }};
-                            {% if organization.phoneNumber2 %}
-                                {{ organization.phoneNumber2 }}
-                            {% endif %}<br>
+                            <span>Телефон:</span> {{ organization.phoneNumber1 }}
                             
                             {% if organization.salesNumber %}
                             <span>Отдел продаж:</span> {{ organization.salesNumber }} <br>
