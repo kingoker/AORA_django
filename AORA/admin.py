@@ -99,7 +99,7 @@ admin.site.register(ContactInformation_Page, ContactInformation_PageAdmin)
 
 # Страница О нас
 class AboutPageAdmin(admin.ModelAdmin):
-    inlines = [MainImageAdmin, ScienceItemAdmin]
+    inlines = [MainImageAdmin]
 
 admin.site.register(AboutPage, AboutPageAdmin)
 
