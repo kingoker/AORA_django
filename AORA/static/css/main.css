@@ -222,7 +222,7 @@ p {
 
 .swiper-slide .header__title {
     position: absolute;
-    top: 130px;
+    bottom: 70px;
     left: 11%;
 }
 
