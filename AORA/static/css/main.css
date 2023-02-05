@@ -222,8 +222,8 @@ p {
 
 .swiper-slide .header__title {
     position: absolute;
-    bottom: 70px;
     left: 11%;
+    bottom: 70px !important;
 }
 
 .slide .header__tiile p {
@@ -484,8 +484,6 @@ p {
 .sbm:focus {
     box-shadow: 0 0.5em 0.5em -0.3em #40ABBD;
     transform: translateY(-0.25em);
-    /* background-position:20vw; */
-    /* animation:slidebg 2s linear infinite; */
 }
 
 @keyframes slidebg {
