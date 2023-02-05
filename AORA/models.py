@@ -159,8 +159,8 @@ class AboutPage(models.Model):
     productionimage = models.ImageField(upload_to='innovationPageProductionPhoto/', verbose_name='Фото блока создания продуктов', null=True)
     productionBottonName = models.CharField(max_length=255, verbose_name='Название кнопки продукта', null=True)
 
-    scienceHeader = models.CharField(max_length=255, verbose_name='Название науки')
-    scienceDescription = models.TextField(verbose_name='Заголовок науки')
+    # scienceHeader = models.CharField(max_length=255, verbose_name='Название науки')
+    # scienceDescription = models.TextField(verbose_name='Заголовок науки')
 
     class Meta:
         verbose_name = '- Страница О нас'
