@@ -1,13 +1,13 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
-from io import BytesIO
-from PIL import Image
-from django.core.files import File
-import numpy as np
-import cv2
-import sys
-import os
+# from io import BytesIO
+# from PIL import Image
+# from django.core.files import File
+# import numpy as np
+# import cv2
+# import sys
+# import os
 
 
 def compress(image, bits=8,  binary=True):
