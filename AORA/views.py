@@ -19,11 +19,11 @@ def index(request):
 #Страница О нас
 def about(request):
     mainImages = MainImage.objects.filter(aboutPage__isnull=False)[:1]
-    scienceItems = ScienceItem.objects.filter(aboutPage__isnull=False)
+    # scienceItems = ScienceItem.objects.filter(aboutPage__isnull=False)
     aboutPages = AboutPage.objects.all()[:1]
 
     context  = {
-        'scienceItems': scienceItems,
+        # 'scienceItems': scienceItems,
         'mainImages': mainImages,
         'aboutPages': aboutPages,
     }
