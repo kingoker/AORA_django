@@ -20,7 +20,7 @@
 {% block content %}            
 {% for importantPage in importantPages %}
     <div class="about__difference_container important__container">
-        <p>{{ importantPage.importantText }}</p>
+        <p>{% autoescape off %} {{ importantPage.importantText }} {% endautoescape %}</p>
     </div>
 {% endfor %}
 {% endblock %}
