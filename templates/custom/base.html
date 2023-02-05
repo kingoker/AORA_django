@@ -39,6 +39,11 @@
                             </svg>
                         </a>
                     </div>
+                    <!-- <div class="language">
+                        <img src="{% static 'img/ru.jpg' %}" alt="ru" data-google-lang="ru" class="language__img">
+                        <img src="{% static 'img/en.jpg' %} " alt="en" data-google-lang="en" class="language__img">
+                        <img src="{% static 'img/uz.jpg' %}" alt="uz" data-google-lang="uz" class="language__img">
+                    </div> -->
                 </div>
                 <div class="menu__burger">
                     <span></span>
@@ -146,6 +151,14 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{% static 'js/script.js' %}"></script>	
+
+    <!-- JQuery, но я хотел без него -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <!-- Гугл переводчик -->
+    <script src="{% static 'js/google-translate.js' %} "></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
 </body>
 
 </html>

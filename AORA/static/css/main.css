@@ -1,30 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 
-
 * {
     font-family: 'Montserrat', sans-serif;
     transition: all 0.5ms ease;
-    scroll-behavior: smooth;
 }
-img{
+
+img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
-p{
-    white-space:pre-line;
+
+p {
+    white-space: pre-line;
 }
+
 .body {
     width: 100%;
 }
+
 .main__h5 {
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
     color: #01313D;
     margin-bottom: 30px;
-    white-space:pre-line;
+    white-space: pre-line;
 }
 
 .main__h4 {
@@ -33,7 +35,7 @@ p{
     line-height: 24px;
     color: #2C2E2D;
     margin-bottom: 10px;
-    white-space:pre-line;
+    white-space: pre-line;
 }
 
 .main__h3 {
@@ -71,16 +73,18 @@ p{
 
 /* index page */
 /* Header */
-.header__content{
+.header__content {
     margin-top: 70px;
 }
-.header__img{
+
+.header__img {
     position: relative;
     width: 100%;
     height: 500px;
     object-fit: cover;
 }
-.header__img::after{
+
+.header__img::after {
     content: '';
     background: linear-gradient(90deg, rgba(58, 158, 174, 0.8) 0%, rgba(128, 228, 244, 0.8) 100%), url(.jpg);
     display: block;
@@ -165,6 +169,30 @@ p{
     fill: white;
 }
 
+.skiptranslate {
+    display: none !important;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    transform: translateY(-50%);
+    display: flex;
+    margin-top: 20px;
+}
+
+.language__img {
+    height: 15px;
+    margin: 2px;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.language__img:hover,
+.language__img_active {
+    opacity: 1;
+}
+
 .bi-telephone-forward {
     margin-left: 3px;
 }
@@ -207,7 +235,8 @@ p{
     object-fit: cover;
     object-position: center;
 }
-.slide::after{
+
+.slide::after {
     content: '';
     background: linear-gradient(57.03deg, rgba(58, 158, 174, 0.8) 26.19%, rgba(128, 228, 244, 0) 66.43%), url();
     display: block;
@@ -262,9 +291,11 @@ p{
 .block__container {
     display: flex;
 }
-.gap-50{
+
+.gap-50 {
     gap: 50px;
 }
+
 .block__container_img {
     max-width: 467px;
     max-height: 467px;
@@ -272,12 +303,15 @@ p{
     border-radius: 5px;
     overflow: hidden;
 }
-.block__container_img img{
+
+.block__container_img img {
     object-fit: contain;
 }
-.mr-0{
+
+.mr-0 {
     margin-right: 0px;
 }
+
 .block__container_text {
     width: 467px;
 }
@@ -442,7 +476,8 @@ p{
     transition: all 0.5s ease;
 }
 
-.sbm:hover, .sbm:focus {
+.sbm:hover,
+.sbm:focus {
     box-shadow: 0 0.5em 0.5em -0.3em #40ABBD;
     transform: translateY(-0.25em);
     /* background-position:20vw; */
@@ -451,7 +486,7 @@ p{
 
 @keyframes slidebg {
     to {
-        background-position:20vw;
+        background-position: 20vw;
     }
 }
 
@@ -477,10 +512,12 @@ p{
     line-height: 24px;
     color: #FFFFFF;
 }
-.footer__block img{
-   max-width: 100px;
-   max-height: 38px; 
+
+.footer__block img {
+    max-width: 100px;
+    max-height: 38px;
 }
+
 .footer__block ul {
     display: flex;
     flex-direction: column;
@@ -565,9 +602,9 @@ p{
     max-width: 1200px;
     height: 100px;
     margin: 0 auto;
-    padding-top: 279px;
+    padding-top: 200px;
     z-index: 3;
-    white-space:pre-line;
+    white-space: pre-line;
 }
 
 .header__title p {
@@ -610,7 +647,8 @@ p{
     align-items: center;
     padding-bottom: 70px;
 }
-.about__difference_points img{
+
+.about__difference_points img {
     height: 57px;
     width: auto;
     object-fit: scale-down;
@@ -637,13 +675,15 @@ p{
 }
 
 /* innovation page */
-.mb-0{
+.mb-0 {
     margin-bottom: 0px;
 }
+
 .header__content_inn {
     background: url(../img/inn_bg.jpg) 100% 100% no-repeat;
     background-size: cover;
 }
+
 .innovation__container {
     max-width: 1200px;
     margin: 0 auto;
@@ -652,13 +692,15 @@ p{
     gap: 70px;
     margin-bottom: 100px;
 }
+
 .innovation__container_block {
     height: 1700px;
     width: 720px;
     margin: 0 auto;
     display: flex;
 }
-.innovation__item{
+
+.innovation__item {
     display: flex;
     justify-content: center;
     gap: 150px;
@@ -668,7 +710,8 @@ p{
     height: 80px;
     width: 230px;
 }
-.innovation__block_img img{
+
+.innovation__block_img img {
     object-fit: contain;
 }
 
@@ -677,24 +720,29 @@ p{
     flex-direction: column;
     justify-content: space-between;
 }
+
 .innovation__block_text {
     max-width: 334px;
 }
-.sience__container{
+
+.sience__container {
     background-image: linear-gradient(to left, #fafafa, #f4f3f3);
     box-shadow: none;
     position: unset;
 }
-.sience__list{
+
+.sience__list {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 40px;
 }
-.sience__item{
+
+.sience__item {
     max-width: 300px;
 }
-.sience__img{
+
+.sience__img {
     margin-bottom: 10px;
     width: 150px;
     height: 80px;
@@ -772,11 +820,13 @@ p{
     display: flex;
     align-items: center;
 }
-.products__section_title img{
+
+.products__section_title img {
     width: 33px;
     height: 33px;
     object-fit: scale-down;
 }
+
 .products__section_title h4 {
     font-weight: 500;
     font-size: 20px;
@@ -971,11 +1021,12 @@ p{
     grid-row-gap: 100px; */
 }
 
-.product__item_images{
+.product__item_images {
     display: flex;
     gap: 20px;
 }
-.product__item_images img{
+
+.product__item_images img {
     width: 120px;
     height: 75px;
     border: 1px solid #8ED2DE;
@@ -984,6 +1035,7 @@ p{
     object-fit: cover;
     object-position: center;
 }
+
 /* .product__main_img {
     grid-area: 1 / 1 / 3 / 4;
 }
@@ -1085,7 +1137,8 @@ p{
     align-items: center;
     justify-content: center;
 }
-.action__container_section img{
+
+.action__container_section img {
     object-fit: scale-down;
     width: 100%;
     height: 100%;
@@ -1282,7 +1335,7 @@ p{
 
 
 /*  */
-.important__container{
+.important__container {
     margin: 70px auto;
     min-height: 0px;
     max-width: 700px;
@@ -1290,24 +1343,27 @@ p{
 
 
 /* Блок Q&A */
-.accordion__container{
+.accordion__container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
-.accordion__header{
+
+.accordion__header {
     margin-top: 100px;
     margin-bottom: 20px;
 }
-.accordion__header{
+
+.accordion__header {
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
     color: #2C2E2D;
 }
-.accordion__container .tab{
+
+.accordion__container .tab {
     position: relative;
     background: #fff;
     padding: 0px 20px 20px;
@@ -1315,15 +1371,18 @@ p{
     border-radius: 5px;
     overflow: hidden;
 }
-.accordion__container .tab input{
+
+.accordion__container .tab input {
     appearance: none;
 }
-.accordion__container .tab label{
+
+.accordion__container .tab label {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
-.accordion__container .tab label::after{
+
+.accordion__container .tab label::after {
     content: '+';
     position: absolute;
     right: 20px;
@@ -1331,13 +1390,16 @@ p{
     color: rgba(0, 0, 0, 0.5);
     transition: transform 0.6s;
 }
-.accordion__container .tab:hover label::after{
+
+.accordion__container .tab:hover label::after {
     color: #333;
 }
-.accordion__container .tab input:checked ~ label::after{
+
+.accordion__container .tab input:checked~label::after {
     transform: rotate(135deg);
 }
-.accordion__container .tab label h3{
+
+.accordion__container .tab label h3 {
     width: 40px;
     height: 40px;
     background: linear-gradient(91.13deg, #40ABBD 0%, #86F1FF 100%);
@@ -1350,7 +1412,8 @@ p{
     margin-right: 10px;
     font-weight: 700;
 }
-.accordion__container .tab label h4{
+
+.accordion__container .tab label h4 {
     margin: 0px;
     font-weight: 400;
     font-size: 20px;
@@ -1358,14 +1421,19 @@ p{
     color: #01313D;
     z-index: 10;
 }
-.accordion__container .tab .accordion__content{
+
+.accordion__container .tab .accordion__content {
     max-height: 0px;
     transition: 0.6s;
     overflow: hidden;
     background-color: #F5FBFB;
 }
-.accordion__container .tab input:checked ~ .accordion__content{
-    max-height: 100vh;
+
+.accordion__container .tab input:checked~.accordion__content {
+    max-height: 1000px;
     margin-top: 15px;
     padding: 20px;
+}
+.skiptranslate{
+    display: none;
 }

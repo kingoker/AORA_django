@@ -13,9 +13,7 @@
     .appropriate__products_container {
         width: 90%;
     }
-    .header__nav{
-        width: 100%;
-    }
+
     .contacts {
         /* width: 90%; */
         /* height: 950px; */
@@ -284,6 +282,11 @@
     .menu__burger span {
         top: 50%;
         transform: scale(1) translate(0px, -50%);
+    }
+
+    .language__img{
+        height: 20px;
+        margin: 5px;
     }
 
     .header__body {

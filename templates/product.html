@@ -78,7 +78,7 @@
                     </div>
                     <div class="product__item_description">
                         <div class="beneficios__section_text">
-                            <p style="white-space:pre-line">{{ product.information }}</p>
+                            <p style="white-space:pre-line">{% autoescape off %} {{ product.information }} {% endautoescape %}</p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         {% endfor %}
                     </div>
                     <div class="beneficios__section_text">
-                        <p>{{ product.beneficiosText }}</p>
+                        <p>{% autoescape off %} {{ product.beneficiosText }} {% endautoescape %}</p>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                         <h4>{{ questionAndAnswer.question }}</h4>
                     </label>
                     <div class="accordion__content">
-                        <p>{{ questionAndAnswer.answer }}</p>
+                        <p>{% autoescape off %} {{ questionAndAnswer.answer }} {% endautoescape %}</p>
                     </div>
                 </div>
                 {% endfor %}

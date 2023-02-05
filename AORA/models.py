@@ -1,4 +1,6 @@
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
+
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
@@ -169,7 +171,7 @@ class AboutPage(models.Model):
 
 
 class ImportantPage(models.Model):
-    importantText = models.TextField(verbose_name='Текст страницы')
+    importantText = CKEditor5Field('Текст страницы', config_name='extends')
 
     class Meta:
         verbose_name = '- Страница Важно'
@@ -260,7 +262,7 @@ class ProductsPage(models.Model):
 class QuestionAndAnswer(models.Model):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, verbose_name='Продукт')
     question = models.TextField(verbose_name='Вопрос')
-    answer = models.TextField(verbose_name='Ответ')
+    answer = CKEditor5Field('Ответ', config_name='extends')
 
     class Meta:
         verbose_name = 'Q&A'
@@ -276,8 +278,8 @@ class Product(models.Model):
     productName = models.CharField(max_length=255, verbose_name='Название продукта')
     productDescription = models.TextField(verbose_name='Описание продукта')
     productPrice = models.IntegerField(default='0', verbose_name='Цена продукта')
-    information = models.TextField(verbose_name='Информация', blank=True, null=True)
-    beneficiosText = models.TextField(blank=True, null =True, verbose_name='Beneficios текст')
+    information = CKEditor5Field('Информация о прродукте', config_name='extends', blank=True, null=True)
+    beneficiosText = CKEditor5Field('Текст преимщества', config_name='extends', null=True)
     mechanismImage = models.ImageField(upload_to='mecanism/', blank=True, null =True, verbose_name='Картинка механизма действия')
     recomendedProducts = models.ManyToManyField('Product', blank=True, verbose_name='Сопутствующие товары')
     slug = models.SlugField(max_length=255, unique=True, verbose_name='Slug')
