@@ -71,12 +71,15 @@ def product(request, slug):
     benefits = Benefits.objects.filter(product__slug=slug)
     questionAndAnswers = QuestionAndAnswer.objects.filter(product__slug=slug)
     reviews = Review.objects.filter(product__slug=slug)
+
     rate = 0
     
     for review in reviews:
         rate += int(review.rate)
     if len(reviews) > 0:
         rate = int(rate/len(reviews))
+
+    reviews = Review.objects.filter(product__slug=slug, published=True).order_by('-id')[:3]
 
     print(rate)
     context  = {
@@ -86,6 +89,8 @@ def product(request, slug):
         'rate': rate,
         'range': range(1,6),
         'total_reviews': len(reviews),
+        'reviews': reviews,
+
     }
 
     return render(request, 'product.html', context)

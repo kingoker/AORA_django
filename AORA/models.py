@@ -1,9 +1,9 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
-# from io import BytesIO
-# from PIL import Image
-# from django.core.files import File
+from io import BytesIO
+from PIL import Image, ExifTags
+from django.core.files import File
 # import numpy as np
 # import cv2
 # import sys
@@ -11,8 +11,16 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 
 def compress(image, bits=8,  binary=True):
+    img = Image.open(image)
+    name = image.name.rsplit(".",2)[0] + '.webp'
+    img = img.convert('RGB')
+    
+    im_io = BytesIO() 
 
-    return image
+    img.save(im_io, 'webp', optimize = True, quality = 20) 
+    
+    new_image = File(im_io, name=name)
+    return new_image
 
 
 #Here we made a model for main slider photos in pages
@@ -35,7 +43,6 @@ class MainImage(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-                print(self.image.url)
                 new_image = compress(self.image)
                 self.image = new_image
                 super().save(*args, **kwargs)
@@ -298,6 +305,9 @@ class Review(models.Model):
     comment = models.TextField(verbose_name='Отзыв', blank=True, null=True)
     number = models.CharField(max_length=255, verbose_name='Номер телефона', null=True)
     rate = models.CharField(max_length=255, verbose_name='Рейтинг', null=True)
+    date = models.DateField(auto_now=False, auto_now_add=True, blank=True, null=True, verbose_name="Дата отзыва")
+    published = models.BooleanField(default=True, verbose_name='Опубликовано')
+
 
     class Meta:
         verbose_name = 'Отзывы'
