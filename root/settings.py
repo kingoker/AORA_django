@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-hl$7^&q&k3$wkf(y_8ab$9)6fd+o6n8cu@6=pof9ifv=+juje8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'http://aora-uzbekistan.com',

@@ -4,19 +4,19 @@ from django_ckeditor_5.fields import CKEditor5Field
 from io import BytesIO
 from PIL import Image, ExifTags
 from django.core.files import File
-import pillow_avif
 
 
+# Функция сжатия изображений
 def compress(image, bits=8,  binary=True):
     img = Image.open(image)
-    name = image.name.rsplit(".",2)[0] + '.AVIF'
+    name = image.name.rsplit(".",2)[0] + '.webp'
 
     image_file_size = 1000
     quality = 90
     
-    while image_file_size > 500 and quality > 5:
+    while image_file_size > 300 and quality > 5:
         im_io = BytesIO() 
-        img.save(im_io, 'AVIF', quality = quality) 
+        img.save(im_io, 'webp', quality = quality) 
         image_file_size = im_io.tell() / 1024
         quality -= 5
     new_image = File(im_io, name=name)
@@ -43,9 +43,9 @@ class MainImage(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-                new_image = compress(self.image)
-                self.image = new_image
-                super().save(*args, **kwargs)
+        new_image = compress(self.image)
+        self.image = new_image
+        super().save(*args, **kwargs)
 
 
 # Model for Organizations in Contact page
