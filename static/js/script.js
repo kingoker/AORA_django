@@ -1,3 +1,4 @@
+// Свайпер на главной странице
 if (document.querySelector('.swiper')){
     var swiper = new Swiper(".swiper", {
         loop: true,

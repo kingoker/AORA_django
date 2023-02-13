@@ -1157,7 +1157,6 @@ p {
 
 .feedback__container_section {
     max-width: 1200px;
-    height: 704px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1168,10 +1167,9 @@ p {
     padding: 70px 100px;
 }
 
-.review__text {
-    margin-bottom: 100px;
+.review__item{
+    margin-bottom: 30px;
 }
-
 .review__text p {
     font-weight: 400;
     font-size: 16px;

@@ -5,10 +5,6 @@ from io import BytesIO
 from PIL import Image, ExifTags
 from django.core.files import File
 import pillow_avif
-# import numpy as np
-# import cv2
-# import sys
-# import os
 
 
 def compress(image, bits=8,  binary=True):
@@ -19,7 +15,6 @@ def compress(image, bits=8,  binary=True):
     quality = 90
     
     while image_file_size > 500 and quality > 5:
-
         im_io = BytesIO() 
         img.save(im_io, 'AVIF', quality = quality) 
         image_file_size = im_io.tell() / 1024
@@ -51,6 +46,7 @@ class MainImage(models.Model):
                 new_image = compress(self.image)
                 self.image = new_image
                 super().save(*args, **kwargs)
+
 
 # Model for Organizations in Contact page
 class Organization(models.Model):

@@ -19,11 +19,9 @@ def index(request):
 #Страница О нас
 def about(request):
     mainImages = MainImage.objects.filter(aboutPage__isnull=False)[:1]
-    # scienceItems = ScienceItem.objects.filter(aboutPage__isnull=False)
     aboutPages = AboutPage.objects.all()[:1]
 
     context  = {
-        # 'scienceItems': scienceItems,
         'mainImages': mainImages,
         'aboutPages': aboutPages,
     }
@@ -70,14 +68,14 @@ def product(request, slug):
     products = Product.objects.filter(slug=slug)
     benefits = Benefits.objects.filter(product__slug=slug)
     questionAndAnswers = QuestionAndAnswer.objects.filter(product__slug=slug)
-    reviews = Review.objects.filter(product__slug=slug)
+    total_reviews = Review.objects.filter(product__slug=slug)
 
     rate = 0
     
-    for review in reviews:
+    for review in total_reviews:
         rate += int(review.rate)
-    if len(reviews) > 0:
-        rate = int(rate/len(reviews))
+    if len(total_reviews) > 0:
+        rate = int(rate/len(total_reviews))
 
     reviews = Review.objects.filter(product__slug=slug, published=True).order_by('-id')[:3]
 
@@ -88,7 +86,7 @@ def product(request, slug):
         'products': products,
         'rate': rate,
         'range': range(1,6),
-        'total_reviews': len(reviews),
+        'total_reviews': len(total_reviews),
         'reviews': reviews,
 
     }
@@ -146,16 +144,12 @@ def thanks(request):
     fullname = request.POST.get('fullname')
     rate = '1'
     
-
     if 'product' in path:
         for i in range(1,6):
             if request.POST.get(f"rating__{i}") != None:
                 rate = f'{i}'
         product = Product.objects.get(slug=path.split('/')[4])
         
-        
-
-        print(products)
         review = Review()
         review.product = product
         review.fullname = fullname
@@ -164,18 +158,18 @@ def thanks(request):
         review.rate = rate
         review.save()
 
-    else:
-        
+        text= f"Отзыв на продукт {product}: \n{rate}⭐️ \n(с сайта AORA) \n\nФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
 
-        text= f"Обратная связь с сайта AORA \n ФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
+        sendMessage(text, admins)
+    else:
+        review = Review()
+        text= f"Обратная связь с сайта AORA \n\nФИО: {fullname}\nНомер Телефона: {number}\nКомментарий: {comment}"
         review.fullname = fullname
         review.comment = comment
         review.number = number
         review.save()
 
         sendMessage(text, admins)
-
-    
 
     return render(request, 'thanks.html')
 
@@ -189,9 +183,8 @@ def base(request):
     return data
 
 
-
-
-def handler404(request,exception):
+# Страница 404
+def handler404(request, exception):
     print(exception)
 
     return render(request, '404.html')
