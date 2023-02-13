@@ -4,6 +4,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 from io import BytesIO
 from PIL import Image, ExifTags
 from django.core.files import File
+import pillow_avif
 # import numpy as np
 # import cv2
 # import sys
@@ -12,13 +13,17 @@ from django.core.files import File
 
 def compress(image, bits=8,  binary=True):
     img = Image.open(image)
-    name = image.name.rsplit(".",2)[0] + '.webp'
-    img = img.convert('RGB')
-    
-    im_io = BytesIO() 
+    name = image.name.rsplit(".",2)[0] + '.AVIF'
 
-    img.save(im_io, 'webp', optimize = True, quality = 20) 
+    image_file_size = 1000
+    quality = 90
     
+    while image_file_size > 500 and quality > 5:
+
+        im_io = BytesIO() 
+        img.save(im_io, 'AVIF', quality = quality) 
+        image_file_size = im_io.tell() / 1024
+        quality -= 5
     new_image = File(im_io, name=name)
     return new_image
 
