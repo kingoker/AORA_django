@@ -6,7 +6,7 @@
     {% for mainImage in mainImages %}
     <div class="header__content">
         <div class="header__img">
-            <img src="{{ mainImage.image.url }}" alt="">
+            <img src="{{ mainImage.image.url }}" alt="{{ mainImage.title }}">
         </div>
         <div class="header__title">
             <h3 class="main__h3">{{ mainImage.title }}</h3>
@@ -50,34 +50,6 @@
                 </div>   
             </div>
         </div>
-
-        <!-- <div class="content__container_diff mt-100">
-           <div class="about__difference_container">
-                <div class="about__community_title">
-                    <h5 class="main__h5">
-                        {{ aboutPage.scienceHeader }}
-                    </h5>
-                    <h4 class="main__h4">{{ aboutPage.scienceDescription }}</h4>
-                </div>
-                <div class="about__difference_container">
-                    <div class="about__companies_block mt-100">
-                        {% for scienceItem in scienceItems %}
-                        <div class="about__companies_points">
-                            <div class="about__companies_img">
-                                <img src="{{ scienceItem.itemImage.url }}" alt="company">
-                            </div>
-                            <div class="about__companies_text">
-                                <h4 class="main__h4">{{ scienceItem.itemTitle }}</h4>
-                                <p>{{ scienceItem.itemDescription }}</p>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-           </div>
-        </div> -->
-
-
     </content>
 
 {% endfor %}
