@@ -1,5 +1,4 @@
 @media (max-width: 1199px) {
-    .header__nav,
     .header__title,
     .container,
     .about__difference_container,
@@ -14,18 +13,12 @@
         width: 90%;
     }
 
-    .contacts {
-        /* width: 90%; */
-        /* height: 950px; */
-    }
-
     .contacts__container_where button {
         width: 400px;
     }
 
     .contacts__where_text {
         width: 400px;
-        /* padding-top: 70px; */
     }
 
     .contacts__container_text {
@@ -43,11 +36,6 @@
 
     .products__section_item {
         width: 340px;
-    }
-
-    .product__item_content,
-    .beneficios__section_text {
-        /* width: 87%; */
     }
 
     .product__description h2 {
