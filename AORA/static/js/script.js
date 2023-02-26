@@ -37,3 +37,25 @@ if(iconMenu){
         })
     })
 }
+
+
+// Плавная прокрутка якорных ссылок
+// выбираем все якорные ссылки на странице
+const anchors = document.querySelectorAll('a[href*="#"]');
+
+// добавляем обработчик событий на каждую якорную ссылку
+for (let anchor of anchors) {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault(); // отменяем стандартное поведение браузера при клике на ссылку
+    const blockID = anchor.getAttribute('href').substr(1); // получаем id элемента, на который ссылается якорная ссылка
+    const block = document.getElementById(blockID); // получаем целевой элемент
+    const offset = 95; // задаем отступ для остановки прокрутки
+    const top = block.getBoundingClientRect().top + window.pageYOffset - offset; // вычисляем позицию целевого элемента с учетом отступа
+    window.scrollTo({
+      top: top,
+      behavior: 'smooth'
+    }); // прокручиваем страницу к целевому элементу с учетом отступа
+  });
+}
+
+
